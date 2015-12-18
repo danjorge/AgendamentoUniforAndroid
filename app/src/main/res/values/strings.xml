@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MinhaAplicacao</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="nav_drawer_items">
+        <item>HandBag</item>
+        <item>Search</item>
+        <item>Notebook</item>
+        <item>SmartPhone</item>
+        <item>Space Ship</item>
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/handbag20</item>
+        <item>@drawable/magnifying57</item>
+        <item>@drawable/notebook87</item>
+        <item>@drawable/smartphones14</item>
+        <item>@drawable/spaceship2</item>
+    </array>
+
+</resources>
