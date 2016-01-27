@@ -3,12 +3,15 @@ package br.com.danielsouza.minhaaplicacao;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.media.Image;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,28 +23,12 @@ public class ListViewAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<MenuItem> listMenuItens;
-    private TypedArray navMenuIcon;
-    private String[] navMenuName;
 
-    public ListViewAdapter(Context mContext) {
+    public ListViewAdapter(Context mContext, ArrayList<MenuItem> listMenuItens) {
         this.mContext = mContext;
-        listMenuItens = new ArrayList<>();
-        setIconsAndName(mContext);
+        this.listMenuItens = listMenuItens;
     }
 
-    public void setIconsAndName(Context context){
-        navMenuIcon = context.getResources().obtainTypedArray(R.array.nav_drawer_icons);
-        navMenuName = context.getResources().getStringArray(R.array.nav_drawer_items);
-
-        listMenuItens.add(new MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
-        listMenuItens.add(new MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
-        listMenuItens.add(new MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
-        listMenuItens.add(new MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
-        listMenuItens.add(new MenuItem(navMenuIcon.getResourceId(4, -1), navMenuName[4]));
-
-        navMenuIcon.recycle();
-
-    }
 
     @Override
     public int getCount() {
@@ -65,11 +52,14 @@ public class ListViewAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.row_layout, null);
         }
 
+        LinearLayout rowWrapped = (LinearLayout) convertView.findViewById(R.id.rowWrapped);
         ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtLabel = (TextView) convertView.findViewById(R.id.label);
 
+        rowWrapped.setBackgroundColor(ContextCompat.getColor(mContext, listMenuItens.get(position).isSelected() ? R.color.blue : android.R.color.transparent));
         icon.setImageResource(listMenuItens.get(position).getIcon());
         txtLabel.setText(listMenuItens.get(position).getNome());
+        txtLabel.setTextColor(ContextCompat.getColor(mContext, listMenuItens.get(position).isSelected() ? R.color.white : android.R.color.black));
 
         return convertView;
     }

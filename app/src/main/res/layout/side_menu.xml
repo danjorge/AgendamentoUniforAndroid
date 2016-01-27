@@ -30,7 +30,7 @@
             android:layout_marginStart="2dp"
             android:textSize="20sp"
             android:textColor="@color/white"
-            android:gravity="bottom"/>
+            android:gravity="bottom|center"/>
 
     </RelativeLayout>
 

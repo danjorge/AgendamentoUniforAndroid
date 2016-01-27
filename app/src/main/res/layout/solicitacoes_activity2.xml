@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+
     android:fitsSystemWindows="true"
     android:paddingTop="?attr/actionBarSize"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/xxtView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="fasdfasdfafd"
-        android:textColor="@color/white"/>
+    />
 
 
 </android.support.design.widget.CoordinatorLayout>

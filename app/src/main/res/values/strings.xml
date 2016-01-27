@@ -3,11 +3,11 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="nav_drawer_items">
-        <item>HandBag</item>
-        <item>Search</item>
-        <item>Notebook</item>
-        <item>SmartPhone</item>
-        <item>Space Ship</item>
+        <item>Solicitações</item>
+        <item>Agendamento</item>
+        <item>Configurações</item>
+        <item>Sobre</item>
+        <item>Sair</item>
     </string-array>
 
     <array name="nav_drawer_icons">
@@ -17,5 +17,7 @@
         <item>@drawable/smartphones14</item>
         <item>@drawable/spaceship2</item>
     </array>
+
+    <string name="lero_lero">A certificação de metodologias que nos auxiliam a lidar com o aumento do diálogo entre os diferentes setores produtivos é uma das consequências dos procedimentos normalmente adotados.Todas estas questões, devidamente ponderadas, levantam dúvidas sobre se a adoção de políticas descentralizadoras faz parte de um processo de gerenciamento do processo de comunicação como um todo.</string>
 
 </resources>
