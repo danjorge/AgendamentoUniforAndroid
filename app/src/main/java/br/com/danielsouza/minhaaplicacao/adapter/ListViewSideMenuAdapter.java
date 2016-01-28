@@ -1,10 +1,7 @@
-package br.com.danielsouza.minhaaplicacao;
+package br.com.danielsouza.minhaaplicacao.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.media.Image;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +13,18 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import br.com.danielsouza.minhaaplicacao.R;
+import br.com.danielsouza.minhaaplicacao.entity.MenuItem;
+
 /**
  * Created by daniel.souza on 16/12/2015.
  */
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewSideMenuAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<MenuItem> listMenuItens;
 
-    public ListViewAdapter(Context mContext, ArrayList<MenuItem> listMenuItens) {
+    public ListViewSideMenuAdapter(Context mContext, ArrayList<MenuItem> listMenuItens) {
         this.mContext = mContext;
         this.listMenuItens = listMenuItens;
     }
@@ -49,7 +49,7 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.row_layout, null);
+            convertView = inflater.inflate(R.layout.row_sidemenu_layout, null);
         }
 
         LinearLayout rowWrapped = (LinearLayout) convertView.findViewById(R.id.rowWrapped);

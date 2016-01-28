@@ -5,6 +5,7 @@
     <string-array name="nav_drawer_items">
         <item>Solicitações</item>
         <item>Agendamento</item>
+        <item>Configurações</item>
         <item>Sobre</item>
         <item>Sair</item>
     </string-array>
@@ -13,11 +14,12 @@
         <item>@drawable/handbag20</item>
         <item>@drawable/magnifying57</item>
         <item>@drawable/notebook87</item>
+        <item>@drawable/smartphones14</item>
         <item>@drawable/spaceship2</item>
     </array>
 
     <string name="sobre_aplicacao">Projeto Integrador \n\n
         Projeto da disciplina PIN V do curso de Análise e Desenvolvimento de Sistemas, turma 2014.1. \n\n
-        A aplicação surgiu da necessidade acesso aos coordenadores, que são bastante ocupados, e tem como objetivo prover uma ferramenta de comunicação entre alunos e coordenadores dos cursos da Universidade de Fortaleza, agilizando assim os atendimentos das coordenações.</string>
+        A aplicação surgiu da necessidade de controle de acesso aos coordenadores, pois os mesmos são bastante ocupados e tem como objetivo prover uma ferramenta de comunicação entre alunos e coordenadores dos cursos da Universidade de Fortaleza, agilizando assim os atendimentos das coordenações.</string>
 
 </resources>

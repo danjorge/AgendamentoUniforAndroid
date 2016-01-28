@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao;
+package br.com.danielsouza.minhaaplicacao.activity;
 
 
 import android.content.DialogInterface;
@@ -9,23 +9,31 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
+
+import br.com.danielsouza.minhaaplicacao.R;
+import br.com.danielsouza.minhaaplicacao.adapter.ListViewSideMenuAdapter;
 
 public class MainActivity extends NavigationDrawer {
 
     private TypedArray navMenuIcon;
     private String[] navMenuName;
-    private ArrayList<br.com.danielsouza.minhaaplicacao.MenuItem> listMenuItens = new ArrayList<>();
+    private ArrayList<br.com.danielsouza.minhaaplicacao.entity.MenuItem> listMenuItens = new ArrayList<>();
     private boolean doubleBackToExitPressedOnce = false;
+
+    private RelativeLayout relativeLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +44,14 @@ public class MainActivity extends NavigationDrawer {
         navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
 
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.MenuItem(navMenuIcon.getResourceId(4, -1), navMenuName[4]));
+        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
+        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
+        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
+        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
 
         navMenuIcon.recycle();
 
-        adapter = new ListViewAdapter(this, listMenuItens);
+        adapter = new ListViewSideMenuAdapter(this, listMenuItens);
         listView.setAdapter(adapter);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -56,19 +63,25 @@ public class MainActivity extends NavigationDrawer {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
 
-                    case 1:
-                        SolicitacoesFragment2 solicitacoes2 = new SolicitacoesFragment2();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, solicitacoes2).commit();
+                    case 0:
+                        SolicitacoesFragment solicitacoes = new SolicitacoesFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, solicitacoes).commit();
                         break;
 
-                    case 3:
+                    case 1:
+                        AgendamentoFragment agendamentoFragment = new AgendamentoFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, agendamentoFragment).commit();
+                        break;
+
+                    case 2:
                         SobreAplicacaoFragment sobreAplicacao = new SobreAplicacaoFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, sobreAplicacao).commit();
                         break;
 
-                    case 4:
+                    case 3:
                         dialogExitApplication(view);
                         break;
+
                 }
                 updateMenuItens(position);
                 toogleMenu();
@@ -80,13 +93,26 @@ public class MainActivity extends NavigationDrawer {
 
         frameLayout = (FrameLayout) findViewById(R.id.changeable);
 
-        View actionB = findViewById(R.id.action_b);
+        actionB = findViewById(R.id.action_b);
         actionB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("http://www.unifor.br");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+            }
+        });
+
+        final FloatingActionsMenu multipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
+        relativeLayout = (RelativeLayout) findViewById(R.id.layout_fab_menu);
+        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (multipleActions.isExpanded()) {
+                    multipleActions.collapse();
+                    return true;
+                }
+                return false;
             }
         });
 
@@ -97,7 +123,7 @@ public class MainActivity extends NavigationDrawer {
     }
 
     public void updateMenuItens(int position){
-        for(br.com.danielsouza.minhaaplicacao.MenuItem m : listMenuItens){
+        for(br.com.danielsouza.minhaaplicacao.entity.MenuItem m : listMenuItens){
             m.setSelected(false);
         }
         listMenuItens.get(position).setSelected(true);
