@@ -1,15 +1,16 @@
 package br.com.danielsouza.minhaaplicacao.activity;
 
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -31,6 +32,8 @@ public class MainActivity extends NavigationDrawer {
     private String[] navMenuName;
     private ArrayList<br.com.danielsouza.minhaaplicacao.entity.MenuItem> listMenuItens = new ArrayList<>();
     private boolean doubleBackToExitPressedOnce = false;
+
+    private ActionBar actionBar;
 
     private RelativeLayout relativeLayout;
 
@@ -57,6 +60,10 @@ public class MainActivity extends NavigationDrawer {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -79,7 +86,7 @@ public class MainActivity extends NavigationDrawer {
                         break;
 
                     case 3:
-                        dialogExitApplication(view);
+                        finish(view);
                         break;
 
                 }
@@ -158,7 +165,7 @@ public class MainActivity extends NavigationDrawer {
 
         this.doubleBackToExitPressedOnce = true;
         View view = findViewById(R.id.changeable);
-        dialogExitApplication(view);
+        finish(view);
 
         new Handler().postDelayed(new Runnable() {
             @Override

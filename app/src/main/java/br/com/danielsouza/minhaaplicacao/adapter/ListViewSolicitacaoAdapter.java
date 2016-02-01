@@ -54,8 +54,8 @@ public class ListViewSolicitacaoAdapter extends BaseAdapter {
         TextView txtLabelAssuntoSolicitacao = (TextView) convertView.findViewById(R.id.label_assunto_solicitacao);
         ImageView imgView = (ImageView) convertView.findViewById(R.id.imgViewSolicitacao);
 
-        txtLabelNumSolicitacao.setText("Nº da Solicitação:" + listSolicitacao.get(position).getId());
-        txtLabelStatusSolicitacao.setText("Status:" +listSolicitacao.get(position).getStatusSolicitacao().getDescricao());
+        txtLabelNumSolicitacao.setText("Nº da Solicitação: " + listSolicitacao.get(position).getId());
+        txtLabelStatusSolicitacao.setText("Status: " +listSolicitacao.get(position).getStatusSolicitacao().getDescricao());
         txtLabelAssuntoSolicitacao.setText("Assunto: " +listSolicitacao.get(position).getAssunto());
         imgView.setImageResource(R.drawable.arrow);
 

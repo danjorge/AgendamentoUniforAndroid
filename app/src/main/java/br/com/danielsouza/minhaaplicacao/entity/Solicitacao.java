@@ -13,7 +13,8 @@ public class Solicitacao {
     private Status statusSolicitacao;
     private Usuarios usuario;
 
-    public Solicitacao(String assunto, String descricao, String respostaSolicitacao, String segundaRespostaSolicitacao, Status statusSolicitacao, Usuarios usuario) {
+    public Solicitacao(Integer id, String assunto, String descricao, String respostaSolicitacao, String segundaRespostaSolicitacao, Status statusSolicitacao, Usuarios usuario) {
+        this.id = id;
         this.assunto = assunto;
         this.descricao = descricao;
         this.respostaSolicitacao = respostaSolicitacao;

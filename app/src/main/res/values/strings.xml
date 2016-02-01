@@ -16,8 +16,11 @@
         <item>@drawable/spaceship2</item>
     </array>
 
-    <string name="sobre_aplicacao">Projeto Integrador \n\n
+    <string name="sobre_aplicacao">
+        Projeto Integrador \n\n
         Projeto da disciplina PIN V do curso de Análise e Desenvolvimento de Sistemas, turma 2014.1. \n\n
-        A aplicação surgiu da necessidade acesso aos coordenadores, que são bastante ocupados, e tem como objetivo prover uma ferramenta de comunicação entre alunos e coordenadores dos cursos da Universidade de Fortaleza, agilizando assim os atendimentos das coordenações.</string>
+        A aplicação tem como objetivo prover uma ferramenta de comunicação entre alunos e coordenadores dos cursos da Universidade de Fortaleza,
+        agilizando assim os atendimentos das coordenações.
+    </string>
 
 </resources>

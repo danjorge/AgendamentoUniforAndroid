@@ -26,7 +26,6 @@ public class SolicitacoesFragment extends Fragment {
     private ListView listViewSolicitacao;
     private ListViewSolicitacaoAdapter listViewSolicitacaoAdapter;
     private ArrayList<Solicitacao> listaSolicitacoes = new ArrayList<>();
-    private Solicitacao solicitacao;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,9 +41,11 @@ public class SolicitacoesFragment extends Fragment {
         usuario.setNome("Daniel");
         usuario.setSenha("12345678");
 
-        solicitacao = new Solicitacao("Aula dia 01/02", "Descrição de solicitação teste", null, null, statusSolicitacao, usuario);
+        Solicitacao solicitacao = new Solicitacao(1,"Aula dia 01/02", "Descrição de solicitação teste", null, null, statusSolicitacao, usuario);
+        Solicitacao solicitacao1 = new Solicitacao(2,"Reclamação Professor", "Estamos reclamando do professor magnus que não tem boa fluencia de ensino e nem consciencia de nota", null, null, statusSolicitacao, usuario);
 
         listaSolicitacoes.add(solicitacao);
+        listaSolicitacoes.add(solicitacao1);
 
         listViewSolicitacao = (ListView) v.findViewById(R.id.listViewSolicitacoes);
         listViewSolicitacaoAdapter = new ListViewSolicitacaoAdapter(v.getContext(), listaSolicitacoes);

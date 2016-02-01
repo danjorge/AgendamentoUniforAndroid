@@ -37,14 +37,6 @@ public class NavigationDrawer extends AppCompatActivity {
 
         TextView profileLogin = (TextView) findViewById(R.id.profile_login);
         profileLogin.setText("danjorge@gmail.com");
-
-        ImageView imgView = (ImageView)findViewById(R.id.img_drawer);
-        imgView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toogleMenu();
-            }
-        });
     }
 
 
