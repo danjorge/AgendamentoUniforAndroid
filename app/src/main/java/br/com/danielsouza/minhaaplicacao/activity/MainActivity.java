@@ -25,6 +25,12 @@ import java.util.ArrayList;
 
 import br.com.danielsouza.minhaaplicacao.R;
 import br.com.danielsouza.minhaaplicacao.adapter.ListViewSideMenuAdapter;
+import br.com.danielsouza.minhaaplicacao.entity.Solicitacao;
+import br.com.danielsouza.minhaaplicacao.interfaces.RestInterface;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MainActivity extends NavigationDrawer {
 
@@ -35,7 +41,9 @@ public class MainActivity extends NavigationDrawer {
 
     private ActionBar actionBar;
 
-    private RelativeLayout relativeLayout;
+    private RelativeLayout fabMenuLayout;
+
+    private DefaultFragment defaultFragment;
 
 
     @Override
@@ -43,6 +51,9 @@ public class MainActivity extends NavigationDrawer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_layout);
         super.onCreateDrawer();
+
+        defaultFragment = new DefaultFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, defaultFragment).commit();
 
         navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
@@ -111,8 +122,8 @@ public class MainActivity extends NavigationDrawer {
         });
 
         final FloatingActionsMenu multipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
-        relativeLayout = (RelativeLayout) findViewById(R.id.layout_fab_menu);
-        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
+        fabMenuLayout = (RelativeLayout) findViewById(R.id.layout_fab_menu);
+        fabMenuLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (multipleActions.isExpanded()) {

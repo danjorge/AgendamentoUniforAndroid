@@ -23,4 +23,10 @@
         agilizando assim os atendimentos das coordenações.
     </string>
 
+    <string name="bem_vindo">Bem-Vindo(a),</string>
+    <string name="txt_bem_vindo">
+        esse é o app de Visualização de Solicitações e Agendamentos da \nUNIFOR (Universidade de Fortaleza).
+        \nPara visualizá-los, acesse o menu ao lado arrastando-o da esquerda para direita ou clicando na seta acima.
+    </string>
+
 </resources>

@@ -7,21 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
 
 import br.com.danielsouza.minhaaplicacao.R;
+import br.com.danielsouza.minhaaplicacao.adapter.ListViewAgendamentoAdapter;
 import br.com.danielsouza.minhaaplicacao.adapter.ListViewSolicitacaoAdapter;
 import br.com.danielsouza.minhaaplicacao.entity.Solicitacao;
 import br.com.danielsouza.minhaaplicacao.entity.Status;
 import br.com.danielsouza.minhaaplicacao.entity.Usuarios;
+import br.com.danielsouza.minhaaplicacao.extensions.RestService;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 /**
  * Created by daniel.souza on 21/12/2015.
  */
-public class SolicitacoesFragment extends Fragment {
+public class SolicitacoesFragment extends RestService {
 
     private ListView listViewSolicitacao;
     private ListViewSolicitacaoAdapter listViewSolicitacaoAdapter;
@@ -48,7 +54,20 @@ public class SolicitacoesFragment extends Fragment {
         listaSolicitacoes.add(solicitacao1);
 
         listViewSolicitacao = (ListView) v.findViewById(R.id.listViewSolicitacoes);
+        restInterface.getSolicitacaoByIdJSON(new Callback<Solicitacao>() {
+            @Override
+            public void success(Solicitacao solicitacao, Response response) {
+                listaSolicitacoes.add(solicitacao);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(getView().getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
         listViewSolicitacaoAdapter = new ListViewSolicitacaoAdapter(v.getContext(), listaSolicitacoes);
+
+
         listViewSolicitacao.setAdapter(listViewSolicitacaoAdapter);
 
 
