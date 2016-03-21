@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.danielsouza.minhaaplicacao.R;
 import br.com.danielsouza.minhaaplicacao.adapter.ListViewAgendamentoAdapter;
@@ -32,8 +33,7 @@ public class SolicitacoesFragment extends RestService {
 
     private ListView listViewSolicitacao;
     private ListViewSolicitacaoAdapter listViewSolicitacaoAdapter;
-    private ArrayList<Solicitacao> listaSolicitacoes = new ArrayList<>();
-    protected RestInterface restInterface;
+    private List<Solicitacao> listaSolicitacoes = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,15 +58,15 @@ public class SolicitacoesFragment extends RestService {
         listViewSolicitacao = (ListView) v.findViewById(R.id.listViewSolicitacoes);
 
         restInterface = RestService.getRestInterface();
-        restInterface.getSolicitacaoByIdJSON(new Callback<Solicitacao>() {
+        restInterface.getSolicitacaoJSON(new Callback<List<Solicitacao>>() {
             @Override
-            public void success(Solicitacao solicitacao, Response response) {
-                listaSolicitacoes.add(solicitacao);
+            public void success(List<Solicitacao> solicitacaoList, Response response) {
+                listaSolicitacoes.addAll(solicitacaoList);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Toast.makeText(getView().getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getView().getContext(), "FAILURE: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         listViewSolicitacaoAdapter = new ListViewSolicitacaoAdapter(v.getContext(), listaSolicitacoes);
