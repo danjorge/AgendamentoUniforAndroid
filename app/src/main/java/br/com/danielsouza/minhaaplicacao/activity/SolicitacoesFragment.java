@@ -19,6 +19,7 @@ import br.com.danielsouza.minhaaplicacao.entity.Solicitacao;
 import br.com.danielsouza.minhaaplicacao.entity.Status;
 import br.com.danielsouza.minhaaplicacao.entity.Usuarios;
 import br.com.danielsouza.minhaaplicacao.extensions.RestService;
+import br.com.danielsouza.minhaaplicacao.interfaces.RestInterface;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -32,6 +33,7 @@ public class SolicitacoesFragment extends RestService {
     private ListView listViewSolicitacao;
     private ListViewSolicitacaoAdapter listViewSolicitacaoAdapter;
     private ArrayList<Solicitacao> listaSolicitacoes = new ArrayList<>();
+    protected RestInterface restInterface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class SolicitacoesFragment extends RestService {
         listaSolicitacoes.add(solicitacao1);
 
         listViewSolicitacao = (ListView) v.findViewById(R.id.listViewSolicitacoes);
+
+        restInterface = RestService.getRestInterface();
         restInterface.getSolicitacaoByIdJSON(new Callback<Solicitacao>() {
             @Override
             public void success(Solicitacao solicitacao, Response response) {

@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="nav_drawer_items">
+        <item>Home</item>
         <item>Solicitações</item>
         <item>Agendamento</item>
         <item>Sobre</item>
@@ -10,6 +11,7 @@
     </string-array>
 
     <array name="nav_drawer_icons">
+        <item>@drawable/home</item>
         <item>@drawable/handbag20</item>
         <item>@drawable/magnifying57</item>
         <item>@drawable/notebook87</item>

@@ -62,6 +62,7 @@ public class MainActivity extends NavigationDrawer {
         listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
         listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
         listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
+        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(4, -1), navMenuName[4]));
 
         navMenuIcon.recycle();
 
@@ -82,21 +83,26 @@ public class MainActivity extends NavigationDrawer {
                 switch (position) {
 
                     case 0:
+                        DefaultFragment defaultFragment = new DefaultFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, defaultFragment).commit();
+                        break;
+
+                    case 1:
                         SolicitacoesFragment solicitacoes = new SolicitacoesFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, solicitacoes).commit();
                         break;
 
-                    case 1:
+                    case 2:
                         AgendamentoFragment agendamentoFragment = new AgendamentoFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, agendamentoFragment).commit();
                         break;
 
-                    case 2:
+                    case 3:
                         SobreAplicacaoFragment sobreAplicacao = new SobreAplicacaoFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, sobreAplicacao).commit();
                         break;
 
-                    case 3:
+                    case 4:
                         finish(view);
                         break;
 
