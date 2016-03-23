@@ -66,7 +66,8 @@ public class SolicitacoesFragment extends RestService {
 
             @Override
             public void failure(RetrofitError error) {
-                Toast.makeText(getView().getContext(), "FAILURE: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getView().getContext(), "FAILURE: " + error.getCause(), Toast.LENGTH_LONG).show();
+                error.printStackTrace();
             }
         });
         listViewSolicitacaoAdapter = new ListViewSolicitacaoAdapter(v.getContext(), listaSolicitacoes);
