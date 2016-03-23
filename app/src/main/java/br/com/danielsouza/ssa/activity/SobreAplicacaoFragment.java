@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.activity;
+package br.com.danielsouza.ssa.activity;
 
 
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import br.com.danielsouza.minhaaplicacao.R;
+import br.com.danielsouza.ssa.R;
 
 /**
  * Created by daniel.souza on 21/12/2015.

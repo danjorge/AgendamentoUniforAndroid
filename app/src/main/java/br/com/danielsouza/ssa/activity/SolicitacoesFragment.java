@@ -1,8 +1,7 @@
-package br.com.danielsouza.minhaaplicacao.activity;
+package br.com.danielsouza.ssa.activity;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.danielsouza.minhaaplicacao.R;
-import br.com.danielsouza.minhaaplicacao.adapter.ListViewAgendamentoAdapter;
-import br.com.danielsouza.minhaaplicacao.adapter.ListViewSolicitacaoAdapter;
-import br.com.danielsouza.minhaaplicacao.entity.Solicitacao;
-import br.com.danielsouza.minhaaplicacao.entity.Status;
-import br.com.danielsouza.minhaaplicacao.entity.Usuarios;
-import br.com.danielsouza.minhaaplicacao.extensions.RestService;
-import br.com.danielsouza.minhaaplicacao.interfaces.RestInterface;
+import br.com.danielsouza.ssa.R;
+import br.com.danielsouza.ssa.adapter.ListViewSolicitacaoAdapter;
+import br.com.danielsouza.ssa.entity.Solicitacao;
+import br.com.danielsouza.ssa.entity.Status;
+import br.com.danielsouza.ssa.entity.Usuarios;
+import br.com.danielsouza.ssa.extensions.RestService;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -33,7 +30,7 @@ public class SolicitacoesFragment extends RestService {
 
     private ListView listViewSolicitacao;
     private ListViewSolicitacaoAdapter listViewSolicitacaoAdapter;
-    private List<Solicitacao> listaSolicitacoes = new ArrayList<>();
+    private List<Solicitacao> listaSolicitacoes = new ArrayList<Solicitacao>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,7 +58,7 @@ public class SolicitacoesFragment extends RestService {
         restInterface.getSolicitacaoJSON(new Callback<List<Solicitacao>>() {
             @Override
             public void success(List<Solicitacao> solicitacaoList, Response response) {
-                listaSolicitacoes.addAll(solicitacaoList);
+                listViewSolicitacaoAdapter = new ListViewSolicitacaoAdapter(getView().getContext(), solicitacaoList);
             }
 
             @Override

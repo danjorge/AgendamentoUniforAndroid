@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.entity;
+package br.com.danielsouza.ssa.entity;
 
 import java.util.Date;
 

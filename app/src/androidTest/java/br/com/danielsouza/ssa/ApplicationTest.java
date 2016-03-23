@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao;
+package br.com.danielsouza.ssa;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

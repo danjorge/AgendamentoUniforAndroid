@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.activity;
+package br.com.danielsouza.ssa.activity;
 
 
 
@@ -23,20 +23,14 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
 
-import br.com.danielsouza.minhaaplicacao.R;
-import br.com.danielsouza.minhaaplicacao.adapter.ListViewSideMenuAdapter;
-import br.com.danielsouza.minhaaplicacao.entity.Solicitacao;
-import br.com.danielsouza.minhaaplicacao.interfaces.RestInterface;
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import br.com.danielsouza.ssa.R;
+import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
 
 public class MainActivity extends NavigationDrawer {
 
     private TypedArray navMenuIcon;
     private String[] navMenuName;
-    private ArrayList<br.com.danielsouza.minhaaplicacao.entity.MenuItem> listMenuItens = new ArrayList<>();
+    private ArrayList<br.com.danielsouza.ssa.entity.MenuItem> listMenuItens = new ArrayList<br.com.danielsouza.ssa.entity.MenuItem>();
     private boolean doubleBackToExitPressedOnce = false;
 
     private ActionBar actionBar;
@@ -44,6 +38,8 @@ public class MainActivity extends NavigationDrawer {
     private RelativeLayout fabMenuLayout;
 
     private DefaultFragment defaultFragment;
+
+    private Boolean novaSolicitacao = false;
 
 
     @Override
@@ -58,11 +54,11 @@ public class MainActivity extends NavigationDrawer {
         navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
 
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
-        listMenuItens.add(new br.com.danielsouza.minhaaplicacao.entity.MenuItem(navMenuIcon.getResourceId(4, -1), navMenuName[4]));
+        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
+        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
+        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
+        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
+        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(4, -1), navMenuName[4]));
 
         navMenuIcon.recycle();
 
@@ -90,6 +86,7 @@ public class MainActivity extends NavigationDrawer {
                     case 1:
                         SolicitacoesFragment solicitacoes = new SolicitacoesFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, solicitacoes).commit();
+                        createButtonNewSolicitacao(true);
                         break;
 
                     case 2:
@@ -147,7 +144,7 @@ public class MainActivity extends NavigationDrawer {
     }
 
     public void updateMenuItens(int position){
-        for(br.com.danielsouza.minhaaplicacao.entity.MenuItem m : listMenuItens){
+        for (br.com.danielsouza.ssa.entity.MenuItem m : listMenuItens) {
             m.setSelected(false);
         }
         listMenuItens.get(position).setSelected(true);
@@ -171,6 +168,18 @@ public class MainActivity extends NavigationDrawer {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void createButtonNewSolicitacao(final Boolean novaSolicitacao) {
+        actionNewSolicitacao = findViewById(R.id.action_new_solicitacao);
+        actionNewSolicitacao.setVisibility(novaSolicitacao ? View.VISIBLE : View.GONE);
+        actionNewSolicitacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NovaSolicitacaoFragment novaSolicitacaoFragment = new NovaSolicitacaoFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.changeable, novaSolicitacaoFragment).commit();
+            }
+        });
     }
 
     @Override
@@ -211,5 +220,13 @@ public class MainActivity extends NavigationDrawer {
         AlertDialog alert = builder.create();
         // The dialog utils is outside an activity. Need to set owner
         alert.show();
+    }
+
+    public Boolean getNovaSolicitacao() {
+        return novaSolicitacao;
+    }
+
+    public void setNovaSolicitacao(Boolean novaSolicitacao) {
+        this.novaSolicitacao = novaSolicitacao;
     }
 }

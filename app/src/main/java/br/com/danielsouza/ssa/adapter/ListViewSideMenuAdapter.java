@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.adapter;
+package br.com.danielsouza.ssa.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import br.com.danielsouza.minhaaplicacao.R;
-import br.com.danielsouza.minhaaplicacao.entity.MenuItem;
+import br.com.danielsouza.ssa.R;
+import br.com.danielsouza.ssa.entity.MenuItem;
 
 /**
  * Created by daniel.souza on 16/12/2015.

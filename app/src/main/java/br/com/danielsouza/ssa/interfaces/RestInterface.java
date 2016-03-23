@@ -1,9 +1,9 @@
-package br.com.danielsouza.minhaaplicacao.interfaces;
+package br.com.danielsouza.ssa.interfaces;
 
 
 import java.util.List;
 
-import br.com.danielsouza.minhaaplicacao.entity.Solicitacao;
+import br.com.danielsouza.ssa.entity.Solicitacao;
 import retrofit.Callback;
 import retrofit.http.GET;
 

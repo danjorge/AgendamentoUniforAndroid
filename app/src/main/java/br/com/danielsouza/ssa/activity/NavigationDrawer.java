@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.activity;
+package br.com.danielsouza.ssa.activity;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import br.com.danielsouza.minhaaplicacao.R;
-import br.com.danielsouza.minhaaplicacao.adapter.ListViewSideMenuAdapter;
+import br.com.danielsouza.ssa.R;
+import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
 
 /**
  * Created by daniel.souza on 22/12/2015.
@@ -25,6 +25,7 @@ public class NavigationDrawer extends AppCompatActivity {
     ListViewSideMenuAdapter adapter;
     protected FrameLayout frameLayout;
     View actionB;
+    View actionNewSolicitacao;
 
     protected void onCreateDrawer() {
 

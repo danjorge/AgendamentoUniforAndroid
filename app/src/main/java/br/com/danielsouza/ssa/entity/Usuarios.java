@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.entity;
+package br.com.danielsouza.ssa.entity;
 
 /**
  * Created by daniel.souza on 27/01/2016.

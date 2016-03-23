@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.activity;
+package br.com.danielsouza.ssa.activity;
 
 
 import android.os.Bundle;
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.danielsouza.minhaaplicacao.R;
-import br.com.danielsouza.minhaaplicacao.adapter.ListViewAgendamentoAdapter;
-import br.com.danielsouza.minhaaplicacao.entity.Agendamento;
-import br.com.danielsouza.minhaaplicacao.entity.Solicitacao;
-import br.com.danielsouza.minhaaplicacao.entity.Status;
-import br.com.danielsouza.minhaaplicacao.entity.Usuarios;
+import br.com.danielsouza.ssa.R;
+import br.com.danielsouza.ssa.adapter.ListViewAgendamentoAdapter;
+import br.com.danielsouza.ssa.entity.Agendamento;
+import br.com.danielsouza.ssa.entity.Solicitacao;
+import br.com.danielsouza.ssa.entity.Status;
+import br.com.danielsouza.ssa.entity.Usuarios;
 
 /**
  * Created by daniel.souza on 27/01/2016.
@@ -54,7 +54,7 @@ public class AgendamentoFragment extends Fragment {
 
         Agendamento agendamento = new Agendamento(1, "Aula dia 01/02", dataInicio, dataFim, solicitacao, statusAgendamento);
 
-        listAgendamento = new ArrayList<>();
+        listAgendamento = new ArrayList<Agendamento>();
         listAgendamento.add(agendamento);
 
         listViewAgendamentoAdapter = new ListViewAgendamentoAdapter(v.getContext(), listAgendamento);

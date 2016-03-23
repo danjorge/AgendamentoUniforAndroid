@@ -1,4 +1,4 @@
-package br.com.danielsouza.minhaaplicacao.adapter;
+package br.com.danielsouza.ssa.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import br.com.danielsouza.minhaaplicacao.R;
-import br.com.danielsouza.minhaaplicacao.entity.Agendamento;
+import br.com.danielsouza.ssa.R;
+import br.com.danielsouza.ssa.entity.Agendamento;
 
 /**
  * Created by daniel.souza on 29/01/2016.

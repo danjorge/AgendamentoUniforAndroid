@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MinhaAplicacao</string>
+    <string name="app_name">SSA - Sistema de Solicitacao e Agendamento</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="nav_drawer_items">
