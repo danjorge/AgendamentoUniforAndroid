@@ -4,6 +4,7 @@ package br.com.danielsouza.ssa.interfaces;
 import java.util.List;
 
 import br.com.danielsouza.ssa.entity.Solicitacao;
+import br.com.danielsouza.ssa.entity.Usuarios;
 import retrofit.Callback;
 import retrofit.http.GET;
 
@@ -12,7 +13,10 @@ import retrofit.http.GET;
  */
 public interface RestInterface {
 
-    @GET("/89/json")
+    @GET("/solicitacao/json")
     void getSolicitacaoJSON(Callback<List<Solicitacao>> callBack);
+
+    @GET("/login/json")
+    void getUsuariosJson(Callback<List<Usuarios>> callback);
 
 }

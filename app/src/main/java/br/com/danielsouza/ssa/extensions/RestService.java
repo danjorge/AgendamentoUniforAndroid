@@ -15,7 +15,7 @@ import retrofit.converter.GsonConverter;
 /**
  * Created by daniel.souza on 22/02/2016.
  */
-public class RestService extends Fragment{
+public class RestService {
 
     protected static RestInterface restInterface;
 
@@ -23,7 +23,7 @@ public class RestService extends Fragment{
 
         if (restInterface == null) {
 
-            String url = "https://172.26.53.85:8080/AgendamentoUnifor/rest/solicitacao/json";
+            String url = "https://172.26.53.85:8080/AgendamentoUnifor/rest";
 
             Gson gson = new GsonBuilder()
                     .setDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'")

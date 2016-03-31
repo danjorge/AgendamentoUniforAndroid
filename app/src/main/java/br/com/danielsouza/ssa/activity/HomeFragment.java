@@ -12,7 +12,7 @@ import br.com.danielsouza.ssa.R;
 /**
  * Created by daniel.souza on 01/02/2016.
  */
-public class DefaultFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

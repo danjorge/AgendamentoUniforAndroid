@@ -33,8 +33,9 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Matricula</string>
-    <string name="prompt_password">Senha</string>
+    <string name="label_login">Login</string>
+    <string name="prompt_matricula">Informe sua Matricula</string>
+    <string name="prompt_password">Informe sua Senha (8 dígitos)</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Entrar</string>
     <string name="error_invalid_email">A matricula é inválida</string>

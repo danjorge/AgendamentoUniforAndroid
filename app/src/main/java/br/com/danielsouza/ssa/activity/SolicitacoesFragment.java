@@ -1,7 +1,9 @@
 package br.com.danielsouza.ssa.activity;
 
 
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import br.com.danielsouza.ssa.entity.Solicitacao;
 import br.com.danielsouza.ssa.entity.Status;
 import br.com.danielsouza.ssa.entity.Usuarios;
 import br.com.danielsouza.ssa.extensions.RestService;
+import br.com.danielsouza.ssa.interfaces.RestInterface;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -26,11 +29,12 @@ import retrofit.client.Response;
 /**
  * Created by daniel.souza on 21/12/2015.
  */
-public class SolicitacoesFragment extends RestService {
+public class SolicitacoesFragment extends Fragment {
 
     private ListView listViewSolicitacao;
     private ListViewSolicitacaoAdapter listViewSolicitacaoAdapter;
-    private List<Solicitacao> listaSolicitacoes = new ArrayList<Solicitacao>();
+    private List<Solicitacao> listaSolicitacoes = new ArrayList<>();
+    private RestInterface restInterface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

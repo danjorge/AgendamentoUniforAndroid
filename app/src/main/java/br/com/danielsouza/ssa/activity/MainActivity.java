@@ -37,7 +37,7 @@ public class MainActivity extends NavigationDrawer {
 
     private RelativeLayout fabMenuLayout;
 
-    private DefaultFragment defaultFragment;
+    private HomeFragment homeFragment;
 
     private Boolean novaSolicitacao = false;
 
@@ -48,8 +48,8 @@ public class MainActivity extends NavigationDrawer {
         setContentView(R.layout.base_layout);
         super.onCreateDrawer();
 
-        defaultFragment = new DefaultFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, defaultFragment).commit();
+        homeFragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, homeFragment).commit();
 
         navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
@@ -79,8 +79,8 @@ public class MainActivity extends NavigationDrawer {
                 switch (position) {
 
                     case 0:
-                        DefaultFragment defaultFragment = new DefaultFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, defaultFragment).commit();
+                        HomeFragment homeFragment = new HomeFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, homeFragment).commit();
                         break;
 
                     case 1:
