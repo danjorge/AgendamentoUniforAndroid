@@ -46,7 +46,7 @@ public class ListViewSolicitacaoAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.row_solicitacao_layout, null);
+            convertView = layoutInflater.inflate(R.layout.layout_row_solicitacao, null);
         }
 
         TextView txtLabelNumSolicitacao = (TextView) convertView.findViewById(R.id.label_num_solicitacao);

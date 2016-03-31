@@ -47,7 +47,7 @@ public class ListViewAgendamentoAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView =  layoutInflater.inflate(R.layout.row_agendamento_layout, null);
+            convertView = layoutInflater.inflate(R.layout.layout_row_agendamento, null);
         }
 
         TextView txtLabelNumAgendamento = (TextView) convertView.findViewById(R.id.label_num_agendamento);

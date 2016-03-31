@@ -30,5 +30,19 @@
         esse é o app de Visualização de Solicitações e Agendamentos da \nUNIFOR (Universidade de Fortaleza).
         \nPara visualizá-los, acesse o menu ao lado arrastando-o da esquerda para direita ou clicando na seta acima.
     </string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Matricula</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">A matricula é inválida</string>
+    <string name="error_invalid_password">O password é muito pequeno</string>
+    <string name="error_incorrect_password">Esse password está incorreto</string>
+    <string name="error_field_required">Esse campo é obrigatório</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 
 </resources>

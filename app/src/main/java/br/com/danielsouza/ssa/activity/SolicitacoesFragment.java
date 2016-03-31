@@ -34,7 +34,7 @@ public class SolicitacoesFragment extends RestService {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.solicitacoes_activity, container, false);
+        View v = inflater.inflate(R.layout.fragment_lista_solicitacoes, container, false);
 
         Status statusSolicitacao = new Status();
         statusSolicitacao.setId(1);

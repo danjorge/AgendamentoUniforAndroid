@@ -49,7 +49,7 @@ public class ListViewSideMenuAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.row_sidemenu_layout, null);
+            convertView = inflater.inflate(R.layout.layout_row_sidemenu, null);
         }
 
         LinearLayout rowWrapped = (LinearLayout) convertView.findViewById(R.id.rowWrapped);
