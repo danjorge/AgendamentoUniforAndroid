@@ -1,6 +1,9 @@
 package br.com.danielsouza.ssa.interfaces;
 
 
+import com.google.gson.reflect.TypeToken;
+
+import java.util.Collection;
 import java.util.List;
 
 import br.com.danielsouza.ssa.entity.Solicitacao;

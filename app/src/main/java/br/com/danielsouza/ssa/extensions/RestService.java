@@ -6,6 +6,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
 
+import java.net.HttpURLConnection;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLPermission;
+import javax.net.ssl.SSLSocketFactory;
+
 import br.com.danielsouza.ssa.interfaces.RestInterface;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
@@ -23,7 +33,7 @@ public class RestService {
 
         if (restInterface == null) {
 
-            String url = "https://172.26.53.85:8080/AgendamentoUnifor/rest";
+            String url = "http://192.168.30.221:8080/AgendamentoUnifor/rest";
 
             Gson gson = new GsonBuilder()
                     .setDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'")

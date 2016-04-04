@@ -8,12 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 import java.util.List;
 
 import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.entity.Usuarios;
 import br.com.danielsouza.ssa.extensions.RestService;
 import br.com.danielsouza.ssa.interfaces.RestInterface;
+import br.com.danielsouza.ssa.utils.Encripta;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -42,24 +49,27 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void success(List<Usuarios> usuarios, Response response) {
                         for (Usuarios u : usuarios) {
-                            if (u.getMatricula().equals(txtMatricula.getText().toString()) && u.getSenha().equals(txtPassword.getText().toString())) {
-                                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(v.getContext(), "Usuario e/ou senha incorretos", Toast.LENGTH_LONG).show();
+                            try {
+                                if (u.getMatricula().equals(txtMatricula.getText().toString()) && u.getSenha().equals(Encripta.encripta(txtPassword.getText().toString()))) {
+                                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(v.getContext(), "Usuario e/ou senha incorretos", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (NoSuchAlgorithmException e) {
+                                e.printStackTrace();
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
                             }
                         }
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-                        Toast.makeText(v.getContext(), "Failure: " + error.getMessage(), Toast.LENGTH_LONG).show();
-                        error.printStackTrace();
+                        Toast.makeText(v.getContext(), "FAILURE: "+error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
-
             }
         });
-
     }
 }
