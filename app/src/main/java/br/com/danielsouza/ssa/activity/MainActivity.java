@@ -20,11 +20,13 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 
 import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
+
 
 public class MainActivity extends NavigationDrawer {
 
@@ -212,6 +214,8 @@ public class MainActivity extends NavigationDrawer {
                 })
                 .setPositiveButton("SIM", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        Prefs.remove("matricula");
+                        Prefs.remove("senha");
                         finish();
                         //error here. Intend to close the activtiy that created this dialog and has the error
                     }

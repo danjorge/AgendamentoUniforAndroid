@@ -1,22 +1,10 @@
-package br.com.danielsouza.ssa.extensions;
-
-import android.support.v4.app.Fragment;
+package br.com.danielsouza.ssa.restImpl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
 
-import java.net.HttpURLConnection;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLHandshakeException;
-import javax.net.ssl.SSLPermission;
-import javax.net.ssl.SSLSocketFactory;
-
-import br.com.danielsouza.ssa.interfaces.RestInterface;
+import br.com.danielsouza.ssa.restInteface.RestInterface;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.converter.GsonConverter;

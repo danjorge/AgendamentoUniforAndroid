@@ -1,65 +1,77 @@
 package br.com.danielsouza.ssa.activity;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.adapter.ListViewAgendamentoAdapter;
 import br.com.danielsouza.ssa.entity.Agendamento;
-import br.com.danielsouza.ssa.entity.Solicitacao;
-import br.com.danielsouza.ssa.entity.Status;
-import br.com.danielsouza.ssa.entity.Usuarios;
+import br.com.danielsouza.ssa.entity.AgendamentoResponse;
+import br.com.danielsouza.ssa.restImpl.RestService;
+import br.com.danielsouza.ssa.restInteface.RestInterface;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
- * Created by daniel.souza on 27/01/2016.
+ * Created by Daniel Jorge on 27/01/2016.
  */
 public class AgendamentoFragment extends Fragment {
 
-    private List<Agendamento> listAgendamento;
+    private List<Agendamento> listAgendamento = new ArrayList<>();
     private ListView listViewAgendamento;
     private ListViewAgendamentoAdapter listViewAgendamentoAdapter;
+    private RestInterface restInterface;
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_lista_agendamento, container, false);
 
-        Date dataInicio = new Date();
-
-        Date dataFim = new Date();
-
-        Status statusSolicitacao = new Status();
-        statusSolicitacao.setId(1);
-        statusSolicitacao.setDescricao("Cadastrado");
-
-        Usuarios usuario = new Usuarios();
-        usuario.setId(1);
-        usuario.setMatricula("1413556");
-        usuario.setNome("Daniel");
-        usuario.setSenha("12345678");
-
-        Solicitacao solicitacao = new Solicitacao(1,"Aula dia 01/02", "Descrição de solicitação teste", "Precisamos conversar, marcarei um agendamneto", null, statusSolicitacao, usuario);
-
-        Status statusAgendamento = new Status();
-        statusAgendamento.setId(1);
-        statusAgendamento.setDescricao("Agendamento Cadastrado");
-
-        Agendamento agendamento = new Agendamento(1, "Aula dia 01/02", dataInicio, dataFim, solicitacao, statusAgendamento);
-
-        listAgendamento = new ArrayList<Agendamento>();
-        listAgendamento.add(agendamento);
-
-        listViewAgendamentoAdapter = new ListViewAgendamentoAdapter(v.getContext(), listAgendamento);
         listViewAgendamento = (ListView) v.findViewById(R.id.listViewAgendamento);
-        listViewAgendamento.setAdapter(listViewAgendamentoAdapter);
+
+        progressDialog = new ProgressDialog(v.getContext());
+        progressDialog.setTitle("SSA Mobile");
+        progressDialog.setMessage("Aguarde");
+        progressDialog.show();
+
+        restInterface = RestService.getRestInterface();
+        restInterface.getAgendamentoJSON(new Callback<AgendamentoResponse>() {
+            @Override
+            public void success(AgendamentoResponse agendamentoResponse, Response response) {
+                if(agendamentoResponse.getListaAgendamento() == null){
+                    progressDialog.dismiss();
+                    Toast.makeText(getView().getContext(), "Você não tem agendamentos", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                for (Agendamento a : agendamentoResponse.getListaAgendamento()) {
+                    if (a != null) {
+                        listAgendamento.add(a);
+                    }
+                }
+                progressDialog.dismiss();
+                listViewAgendamentoAdapter = new ListViewAgendamentoAdapter(getView().getContext(), listAgendamento);
+                listViewAgendamento.setAdapter(listViewAgendamentoAdapter);
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                progressDialog.dismiss();
+                Toast.makeText(getView().getContext(), "FAILURE: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                error.printStackTrace();
+            }
+        });
 
         return v;
     }

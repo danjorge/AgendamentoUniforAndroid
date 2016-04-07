@@ -56,7 +56,7 @@ public class ListViewSolicitacaoAdapter extends BaseAdapter {
 
         txtLabelNumSolicitacao.setText("Nº da Solicitação: " + listSolicitacao.get(position).getId());
         txtLabelStatusSolicitacao.setText("Status: " +listSolicitacao.get(position).getStatusSolicitacao().getDescricao());
-        txtLabelAssuntoSolicitacao.setText("Assunto: " +listSolicitacao.get(position).getAssunto());
+        txtLabelAssuntoSolicitacao.setText("Assunto: " +listSolicitacao.get(position).getAssunto().toUpperCase());
         imgView.setImageResource(R.drawable.arrow);
 
         return convertView;

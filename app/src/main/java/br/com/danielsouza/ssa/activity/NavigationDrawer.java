@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.pixplicity.easyprefs.library.Prefs;
 import com.squareup.picasso.Picasso;
 
 import br.com.danielsouza.ssa.R;
@@ -27,6 +28,7 @@ public class NavigationDrawer extends AppCompatActivity {
     View actionB;
     View actionNewSolicitacao;
 
+
     protected void onCreateDrawer() {
 
         listView = (ListView) findViewById(R.id.list_view);
@@ -37,7 +39,7 @@ public class NavigationDrawer extends AppCompatActivity {
         Picasso.with(this).load(R.drawable.image_usuario).into(profileImage);
 
         TextView profileLogin = (TextView) findViewById(R.id.profile_login);
-        profileLogin.setText("danjorge@gmail.com");
+        profileLogin.setText(Prefs.getString("nome", "Daniel Jorge"));
     }
 
 
