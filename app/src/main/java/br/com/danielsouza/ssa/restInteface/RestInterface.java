@@ -6,14 +6,15 @@ import br.com.danielsouza.ssa.entity.SolicitacoesResponse;
 import br.com.danielsouza.ssa.entity.UsuariosResponse;
 import retrofit.Callback;
 import retrofit.http.GET;
+import retrofit.http.Path;
 
 /**
- * Created by daniel.souza on 19/02/2016.
+ * Created by Daniel Jorge on 19/02/2016.
  */
 public interface RestInterface {
 
-    @GET("/solicitacao/json")
-    void getSolicitacaoJSON(Callback<SolicitacoesResponse> callBack);
+    @GET("/solicitacao/{matricula}/json")
+    void getSolicitacaoJSON(@Path("matricula") String matricula, Callback<SolicitacoesResponse> callback);
 
     @GET("/agendamento/json")
     void getAgendamentoJSON(Callback<AgendamentoResponse> callback);

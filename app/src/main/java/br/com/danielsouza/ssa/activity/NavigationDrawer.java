@@ -16,7 +16,7 @@ import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
 
 /**
- * Created by daniel.souza on 22/12/2015.
+ * Created by Daniel Jorge on 22/12/2015.
  */
 public class NavigationDrawer extends AppCompatActivity {
 

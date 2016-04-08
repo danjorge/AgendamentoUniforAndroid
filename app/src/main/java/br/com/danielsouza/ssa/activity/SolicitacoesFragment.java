@@ -3,8 +3,10 @@ package br.com.danielsouza.ssa.activity;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +54,7 @@ public class SolicitacoesFragment extends Fragment {
         progressDialog.show();
 
         restInterface = RestService.getRestInterface();
-        restInterface.getSolicitacaoJSON(new Callback<SolicitacoesResponse>() {
+        restInterface.getSolicitacaoJSON(Prefs.getString("matricula", "1413556"), new Callback<SolicitacoesResponse>() {
             @Override
             public void success(SolicitacoesResponse solicitacoesResponse, Response response) {
                 for (Solicitacao s : solicitacoesResponse.getListaSolicitacao()) {
@@ -75,7 +79,9 @@ public class SolicitacoesFragment extends Fragment {
         listViewSolicitacao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(view.getContext(), SolicitacaoDetailActivity.class);
+                getActivity().startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 

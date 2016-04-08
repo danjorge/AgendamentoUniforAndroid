@@ -31,11 +31,12 @@
         \nPara visualizá-los, acesse o menu ao lado arrastando-o da esquerda para direita ou clicando na seta acima.
     </string>
     <string name="title_activity_login">Sign in</string>
+    <string name="corporight">© 2016 SSA Mobile ALL RIGHTS RESERVED</string>
 
     <!-- Strings related to login -->
     <string name="label_login">Login</string>
     <string name="prompt_matricula">Informe sua Matricula</string>
-    <string name="prompt_password">Informe sua Senha (8 dígitos)</string>
+    <string name="prompt_password">Informe sua Senha</string>
     <string name="action_sign_in">Entrar</string>
     <string name="action_sign_in_short">Entrar</string>
     <string name="error_invalid_email">A matricula é inválida</string>

@@ -11,7 +11,7 @@ import retrofit.converter.GsonConverter;
 
 
 /**
- * Created by daniel.souza on 22/02/2016.
+ * Created by Daniel Jorge on 22/02/2016.
  */
 public class RestService {
 

@@ -27,7 +27,9 @@ import java.util.ArrayList;
 import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
 
-
+/**
+ * Created by Daniel Jorge on 01/12/2015
+ */
 public class MainActivity extends NavigationDrawer {
 
     private TypedArray navMenuIcon;
@@ -224,13 +226,5 @@ public class MainActivity extends NavigationDrawer {
         AlertDialog alert = builder.create();
         // The dialog utils is outside an activity. Need to set owner
         alert.show();
-    }
-
-    public Boolean getNovaSolicitacao() {
-        return novaSolicitacao;
-    }
-
-    public void setNovaSolicitacao(Boolean novaSolicitacao) {
-        this.novaSolicitacao = novaSolicitacao;
     }
 }
