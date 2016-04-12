@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/label_detalhes_solicitacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="65dp"
+        android:text="@string/solicitacao_detail"
+        />
+
+    <TextView
+        android:id="@+id/label_id_solicitacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_detalhes_solicitacao"
+        android:paddingTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/label_num_solicitacao"
+        />
+
+    <TextView
+        android:id="@+id/txt_id_solicitacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginStart="120dp"
+        android:layout_below="@+id/label_detalhes_solicitacao"
+        android:paddingTop="20dp"/>
+
+    <TextView
+        android:id="@+id/label_status_solicitacao_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_id_solicitacao"
+        android:paddingTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/label_status_solicitacao"/>
+
+    <TextView
+        android:id="@+id/txt_status_solicitacao_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="52dp"
+        android:layout_marginStart="52dp"
+        android:layout_below="@+id/label_id_solicitacao"
+        android:paddingTop="20dp"/>
+
+    <TextView
+        android:id="@+id/label_solicitante_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_status_solicitacao_detail"
+        android:paddingTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/label_solicitante"/>
+
+    <TextView
+        android:id="@+id/txt_solicitante_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_below="@id/label_status_solicitacao_detail"
+        android:paddingTop="20dp"/>
+
+    <TextView
+        android:id="@+id/label_assunto_solicitacao_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_solicitante_detail"
+        android:paddingTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/label_assunto_solicitacao"/>
+
+    <TextView
+        android:id="@+id/txt_assunto_solicitacao_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="63dp"
+        android:layout_marginStart="63dp"
+        android:layout_below="@id/label_solicitante_detail"
+        android:paddingTop="20dp"/>
+
+
+    <TextView
+        android:id="@+id/label_dsc_solicitacao_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_assunto_solicitacao_detail"
+        android:paddingTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:text="@string/label_dsc_solicitacao"/>
+
+    <TextView
+        android:id="@+id/txt_dsc_solicitacao_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_dsc_solicitacao_detail"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp"/>
+
+</RelativeLayout>

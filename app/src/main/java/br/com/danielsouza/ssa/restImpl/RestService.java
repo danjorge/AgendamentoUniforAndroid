@@ -21,7 +21,7 @@ public class RestService {
 
         if (restInterface == null) {
 
-            String url = "http://192.168.30.221:8080/AgendamentoUnifor/rest";
+            String url = "http://192.168.30.52:8080/AgendamentoUnifor/rest";
 
             Gson gson = new GsonBuilder()
                     .setDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'")

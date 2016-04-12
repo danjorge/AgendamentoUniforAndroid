@@ -49,7 +49,7 @@ public class AgendamentoFragment extends Fragment {
         restInterface.getAgendamentoJSON(new Callback<AgendamentoResponse>() {
             @Override
             public void success(AgendamentoResponse agendamentoResponse, Response response) {
-                if(agendamentoResponse.getListaAgendamento() == null){
+                if(agendamentoResponse == null){
                     progressDialog.dismiss();
                     Toast.makeText(getView().getContext(), "Você não tem agendamentos", Toast.LENGTH_LONG).show();
                     return;

@@ -2,6 +2,7 @@ package br.com.danielsouza.ssa.activity;
 
 
 
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -19,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.pixplicity.easyprefs.library.Prefs;
 
@@ -32,19 +34,11 @@ import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
  */
 public class MainActivity extends NavigationDrawer {
 
-    private TypedArray navMenuIcon;
-    private String[] navMenuName;
-    private ArrayList<br.com.danielsouza.ssa.entity.MenuItem> listMenuItens = new ArrayList<br.com.danielsouza.ssa.entity.MenuItem>();
+    private ArrayList<br.com.danielsouza.ssa.entity.MenuItem> listMenuItens = new ArrayList<>();
     private boolean doubleBackToExitPressedOnce = false;
-
-    private ActionBar actionBar;
-
-    private RelativeLayout fabMenuLayout;
-
-    private HomeFragment homeFragment;
-
-    private Boolean novaSolicitacao = false;
-
+    private boolean novaSolicitacao = false;
+    private FloatingActionsMenu multipleActions;
+    private Integer clickMenu = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +46,11 @@ public class MainActivity extends NavigationDrawer {
         setContentView(R.layout.base_layout);
         super.onCreateDrawer();
 
-        homeFragment = new HomeFragment();
+        HomeFragment homeFragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, homeFragment).commit();
 
-        navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
-        navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
+        TypedArray navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        String[] navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
 
         listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
         listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
@@ -72,9 +66,22 @@ public class MainActivity extends NavigationDrawer {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        multipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
+        RelativeLayout fabMenuLayout = (RelativeLayout) findViewById(R.id.layout_fab_menu);
+        fabMenuLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (multipleActions.isExpanded()) {
+                    multipleActions.collapse();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -90,7 +97,7 @@ public class MainActivity extends NavigationDrawer {
                     case 1:
                         SolicitacoesFragment solicitacoes = new SolicitacoesFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, solicitacoes).commit();
-                        createButtonNewSolicitacao(true);
+                        novaSolicitacao = true;
                         break;
 
                     case 2:
@@ -127,20 +134,6 @@ public class MainActivity extends NavigationDrawer {
                 startActivity(intent);
             }
         });
-
-        final FloatingActionsMenu multipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
-        fabMenuLayout = (RelativeLayout) findViewById(R.id.layout_fab_menu);
-        fabMenuLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (multipleActions.isExpanded()) {
-                    multipleActions.collapse();
-                    return true;
-                }
-                return false;
-            }
-        });
-
     }
 
     public void finish(View view){
@@ -154,6 +147,18 @@ public class MainActivity extends NavigationDrawer {
         listMenuItens.get(position).setSelected(true);
 
         adapter.notifyDataSetChanged();
+
+        if(position == 1) {
+            clickMenu++;
+        }
+
+        if(position == 1 && clickMenu == 1){
+            multipleActions.addButton(createButtonNewSolicitacao(novaSolicitacao));
+        }
+        else if(multipleActions.getChildAt(3).isClickable()){
+            multipleActions.removeButton(actionNewSolicitacao);
+            clickMenu--;
+        }
     }
 
     @Override
@@ -174,8 +179,9 @@ public class MainActivity extends NavigationDrawer {
         return super.onOptionsItemSelected(item);
     }
 
-    public void createButtonNewSolicitacao(final Boolean novaSolicitacao) {
-        actionNewSolicitacao = findViewById(R.id.action_new_solicitacao);
+    public FloatingActionButton createButtonNewSolicitacao(final Boolean novaSolicitacao) {
+        actionNewSolicitacao = new FloatingActionButton(getBaseContext());
+        actionNewSolicitacao.setTitle("Nova Solicitação");
         actionNewSolicitacao.setVisibility(novaSolicitacao ? View.VISIBLE : View.GONE);
         actionNewSolicitacao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,6 +190,8 @@ public class MainActivity extends NavigationDrawer {
                 getSupportFragmentManager().beginTransaction().replace(R.id.changeable, novaSolicitacaoFragment).commit();
             }
         });
+
+        return actionNewSolicitacao;
     }
 
     @Override

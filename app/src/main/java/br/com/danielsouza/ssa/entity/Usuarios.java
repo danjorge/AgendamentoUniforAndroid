@@ -1,9 +1,11 @@
 package br.com.danielsouza.ssa.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by daniel.souza on 27/01/2016.
  */
-public class Usuarios {
+public class Usuarios implements Serializable {
 
     private Integer id;
     private String nome;

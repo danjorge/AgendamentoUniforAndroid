@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +27,7 @@ public class NavigationDrawer extends AppCompatActivity {
     ListViewSideMenuAdapter adapter;
     protected FrameLayout frameLayout;
     View actionB;
-    View actionNewSolicitacao;
+    FloatingActionButton actionNewSolicitacao;
 
 
     protected void onCreateDrawer() {

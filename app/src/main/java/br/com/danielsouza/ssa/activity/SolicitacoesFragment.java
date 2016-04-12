@@ -5,6 +5,7 @@ package br.com.danielsouza.ssa.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -80,6 +81,8 @@ public class SolicitacoesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(view.getContext(), SolicitacaoDetailActivity.class);
+                Solicitacao solicitacao = listaSolicitacoes.get(position);
+                intent.putExtra("Solicitacao", solicitacao);
                 getActivity().startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }

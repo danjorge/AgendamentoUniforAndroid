@@ -47,4 +47,12 @@
         completions."
     </string>
 
+    <!-- Strings related to Solicitacao detail-->
+    <string name="solicitacao_detail">Detalhes da Solicitação</string>
+    <string name="label_num_solicitacao">Nº da Solicitação: </string>
+    <string name="label_status_solicitacao">Status: </string>
+    <string name="label_assunto_solicitacao">Assunto: </string>
+    <string name="label_solicitante">Solicitante: </string>
+    <string name="label_dsc_solicitacao">Descrição: </string>
+
 </resources>
