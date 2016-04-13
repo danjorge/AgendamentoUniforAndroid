@@ -15,14 +15,7 @@ public class Solicitacao implements Serializable{
     private Status statusSolicitacao;
     private Usuarios usuario;
 
-    public Solicitacao(Integer id, String assunto, String descricao, String respostaSolicitacao, String segundaRespostaSolicitacao, Status statusSolicitacao, Usuarios usuario) {
-        this.id = id;
-        this.assunto = assunto;
-        this.descricao = descricao;
-        this.respostaSolicitacao = respostaSolicitacao;
-        this.segundaRespostaSolicitacao = segundaRespostaSolicitacao;
-        this.statusSolicitacao = statusSolicitacao;
-        this.usuario = usuario;
+    public Solicitacao() {
     }
 
     public Integer getId() {

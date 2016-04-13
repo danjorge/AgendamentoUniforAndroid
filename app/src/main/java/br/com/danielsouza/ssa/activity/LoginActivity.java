@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (u.getMatricula().equals(txtMatricula.getText().toString()) && u.getSenha().equals(Encripta.encripta(txtPassword.getText().toString()))) {
                     Intent intent = new Intent(v.getContext(), MainActivity.class);
                     startActivity(intent);
-                    salvarUsuario(u.getMatricula(), u.getSenha(), u.getNome());
+                    salvarUsuario(u);
                     break;
                 } else {
                     Toast.makeText(v.getContext(), "Usuario e/ou senha incorretos", Toast.LENGTH_LONG).show();
@@ -111,14 +111,15 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void salvarUsuario(String matricula, String senha, String nome) {
-        String[] nomeCompleto = nome.split(" ");
+    private void salvarUsuario(Usuarios u) {
+        String[] nomeCompleto = u.getNome().split(" ");
         String primeiroNome = nomeCompleto[0];
         String sobrenome = nomeCompleto[1];
         String nomeSalvar = primeiroNome + " " + sobrenome;
 
-        Prefs.putString("matricula", matricula);
-        Prefs.putString("senha", senha);
+        Prefs.putString("matricula", u.getMatricula());
+        Prefs.putString("senha", u.getSenha());
         Prefs.putString("nome", nomeSalvar);
+        Prefs.putInt("id", u.getId());
     }
 }

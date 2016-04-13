@@ -2,10 +2,13 @@ package br.com.danielsouza.ssa.restInteface;
 
 
 import br.com.danielsouza.ssa.entity.AgendamentoResponse;
+import br.com.danielsouza.ssa.entity.Solicitacao;
 import br.com.danielsouza.ssa.entity.SolicitacoesResponse;
 import br.com.danielsouza.ssa.entity.UsuariosResponse;
 import retrofit.Callback;
+import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.POST;
 import retrofit.http.Path;
 
 /**
@@ -21,5 +24,8 @@ public interface RestInterface {
 
     @GET("/login/json")
     void getUsuariosJson(Callback<UsuariosResponse> callback);
+
+    @POST("/solicitacao/salvarSolicitacao")
+    void salvarSolicitacao(@Body Solicitacao solicitacao, Callback<Solicitacao> callback);
 
 }

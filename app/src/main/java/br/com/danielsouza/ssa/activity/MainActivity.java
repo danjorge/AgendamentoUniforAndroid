@@ -159,6 +159,9 @@ public class MainActivity extends NavigationDrawer {
             multipleActions.removeButton(actionNewSolicitacao);
             clickMenu--;
         }
+        else if(clickMenu > 1){
+            clickMenu--;
+        }
     }
 
     @Override

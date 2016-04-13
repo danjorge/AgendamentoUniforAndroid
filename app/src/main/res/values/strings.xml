@@ -55,4 +55,7 @@
     <string name="label_solicitante">Solicitante: </string>
     <string name="label_dsc_solicitacao">Descrição: </string>
 
+    <!-- Strings related to Nova Solicitacao -->
+    <string name="label_nova_solicitacao">Nova Solicitacao</string>
+
 </resources>
