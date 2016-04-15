@@ -54,6 +54,7 @@ public class SolicitacoesFragment extends Fragment {
         progressDialog = new ProgressDialog(v.getContext());
         progressDialog.setTitle("SSA Mobile");
         progressDialog.setMessage("Aguarde");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         //Recupera a instancia da interface no fragment

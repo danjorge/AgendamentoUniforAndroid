@@ -3,7 +3,6 @@ package br.com.danielsouza.ssa.activity;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,7 +26,8 @@ public class NavigationDrawer extends AppCompatActivity {
     ListView listView;
     ListViewSideMenuAdapter adapter;
     protected FrameLayout frameLayout;
-    View actionB;
+    FloatingActionButton actionB;
+    FloatingActionButton actionA;
     FloatingActionButton actionNewSolicitacao;
 
 

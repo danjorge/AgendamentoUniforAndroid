@@ -1,6 +1,7 @@
 package br.com.danielsouza.ssa.activity;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ public class NovaSolicitacaoFragment extends Fragment {
     private RestInterface restInterface;
     private EditText txtAssuntoSolicitacao;
     private EditText txtDescricaoSolicitacao;
-    private Status statusSolicitacao;
+    private ProgressDialog progressDialog;
 
     /**
      * Metodo responsavel pela criacao do Fragment quando inicializado.
@@ -48,6 +49,9 @@ public class NovaSolicitacaoFragment extends Fragment {
         txtDescricaoSolicitacao = (EditText) v.findViewById(R.id.txt_dsc_nova_solicitacao);
         Button btnSalvarSolicitacao = (Button) v.findViewById(R.id.btn_salvar_solicitacao);
 
+
+
+
         /**
          * Instancia de interface que recupera o serviço para utilização na classe.
          */
@@ -59,6 +63,12 @@ public class NovaSolicitacaoFragment extends Fragment {
         btnSalvarSolicitacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressDialog = new ProgressDialog(v.getContext());
+                progressDialog.setTitle("SSA Mobile");
+                progressDialog.setMessage("Aguarde");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
 
                 //Instancia de usuario para setar na nova solicitacao.
                 Usuarios u = new Usuarios();
@@ -88,11 +98,13 @@ public class NovaSolicitacaoFragment extends Fragment {
                 restInterface.salvarSolicitacao(sol, new Callback<Solicitacao>() {
                     @Override
                     public void success(Solicitacao solicitacao, Response response) {
+                        progressDialog.dismiss();
                         Toast.makeText(getView().getContext(), "Solicitação salva com sucesso", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
+                        progressDialog.dismiss();
                         Toast.makeText(getView().getContext(), "FAILURED: " +error.getMessage(), Toast.LENGTH_LONG).show();
                         error.printStackTrace();
                     }

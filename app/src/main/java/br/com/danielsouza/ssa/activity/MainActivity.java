@@ -2,13 +2,19 @@ package br.com.danielsouza.ssa.activity;
 
 
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -139,8 +145,12 @@ public class MainActivity extends NavigationDrawer {
 
         frameLayout = (FrameLayout) findViewById(R.id.changeable);
 
+        actionA = (FloatingActionButton) findViewById(R.id.action_a);
+        actionA.setIcon(R.drawable.ic_power_settings_new_black_24dp);
+
         //Adiciona acao para um dos botoes do Floating Action Button redirecionando para o site da unifor no browser.
-        actionB = findViewById(R.id.action_b);
+        actionB = (FloatingActionButton) findViewById(R.id.action_b);
+        actionB.setIcon(R.drawable.ic_trending_flat_black_24dp);
         actionB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,12 +188,9 @@ public class MainActivity extends NavigationDrawer {
         if(position == 1 && clickMenu == 1){
             multipleActions.addButton(createButtonNewSolicitacao(novaSolicitacao));
         }
-        else if(multipleActions.getChildAt(3).isClickable()){
+        else if(multipleActions.getChildAt(3).isShown() && position != 1){
+            clickMenu -= clickMenu;
             multipleActions.removeButton(actionNewSolicitacao);
-            clickMenu--;
-        }
-        else if(clickMenu > 1){
-            clickMenu--;
         }
     }
 
@@ -206,12 +213,16 @@ public class MainActivity extends NavigationDrawer {
     public FloatingActionButton createButtonNewSolicitacao(final Boolean novaSolicitacao) {
         actionNewSolicitacao = new FloatingActionButton(getBaseContext());
         actionNewSolicitacao.setTitle("Nova Solicitação");
+        actionNewSolicitacao.setIcon(R.drawable.ic_create_black_24dp);
+        actionNewSolicitacao.setColorNormalResId(R.color.white);
+        actionNewSolicitacao.setColorPressedResId(R.color.white_pressed);
         actionNewSolicitacao.setVisibility(novaSolicitacao ? View.VISIBLE : View.GONE);
         actionNewSolicitacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NovaSolicitacaoFragment novaSolicitacaoFragment = new NovaSolicitacaoFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.changeable, novaSolicitacaoFragment).commit();
+                multipleActions.collapse();
             }
         });
 
