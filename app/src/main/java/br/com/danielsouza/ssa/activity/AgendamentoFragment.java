@@ -24,6 +24,8 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Classe responsavel por instanciar o fragment de Agendamento
+ * @author Daniel Jorge
  * Created by Daniel Jorge on 27/01/2016.
  */
 public class AgendamentoFragment extends Fragment {
@@ -40,20 +42,28 @@ public class AgendamentoFragment extends Fragment {
 
         listViewAgendamento = (ListView) v.findViewById(R.id.listViewAgendamento);
 
+        //Instancia do dialog para bloqueio e informe de buscar de informacao para o usuario
         progressDialog = new ProgressDialog(v.getContext());
         progressDialog.setTitle("SSA Mobile");
         progressDialog.setMessage("Aguarde");
         progressDialog.show();
 
+        //Recupera a instancia da interface no fragment
         restInterface = RestService.getRestInterface();
+
+        //Chama o serviço e retorna uma lista com os agendamentos quando o fragment e criado.
         restInterface.getAgendamentoJSON(new Callback<AgendamentoResponse>() {
             @Override
             public void success(AgendamentoResponse agendamentoResponse, Response response) {
+                //Caso a lista esteja nula, apresenta um Toast informando que o usuario não possui agendamentos cadastrados
+                //e retorna.
                 if(agendamentoResponse == null){
                     progressDialog.dismiss();
                     Toast.makeText(getView().getContext(), "Você não tem agendamentos", Toast.LENGTH_LONG).show();
                     return;
                 }
+
+                //Percorre a lista do servico e adiciona o objeto a lista do fragment para adaptacao
                 for (Agendamento a : agendamentoResponse.getListaAgendamento()) {
                     if (a != null) {
                         listAgendamento.add(a);

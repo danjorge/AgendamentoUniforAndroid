@@ -8,6 +8,7 @@ import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.entity.Solicitacao;
 
 /**
+ * Classe de iniciacao da Activity de detalhe da solicitacao
  * Created by Daniel Jorge on 08/04/2016.
  */
 public class SolicitacaoDetailActivity extends AppCompatActivity {
@@ -17,6 +18,9 @@ public class SolicitacaoDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitacao_detail);
 
+        /**
+         * Recupera o objeto passado de outra activity/fragment para setar nas labels que compoem a activity
+         */
         Solicitacao solicitacao = (Solicitacao) getIntent().getSerializableExtra("Solicitacao");
 
         TextView txtIdSolicitacao = (TextView) findViewById(R.id.txt_id_solicitacao);

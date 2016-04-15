@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import br.com.danielsouza.ssa.R;
 
 /**
- * Created by daniel.souza on 21/12/2015.
+ * Classe de instancia do fragment Sobre a Aplicacao
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 21/12/2015.
  */
 public class SobreAplicacaoFragment extends Fragment {
 

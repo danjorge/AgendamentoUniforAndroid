@@ -5,10 +5,18 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by Salviano on 04/04/2016.
+ * Classe responsavel por encriptar a senha do usuario.
+ * Created by Daniel Jorge on 04/04/2016.
  */
 public class Encripta {
 
+    /**
+     * Metodo estatico responsavel por encriptar a senha informada pelo usuario no momento do login.
+     * @param original
+     * @return senha criptografada
+     * @throws NoSuchAlgorithmException
+     * @throws UnsupportedEncodingException
+     */
     public static String encripta (String original) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         try {
             MessageDigest algorithm = MessageDigest.getInstance("SHA-512");

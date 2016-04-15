@@ -1,7 +1,9 @@
 package br.com.danielsouza.ssa.entity;
 
 /**
- * Created by daniel.souza on 16/12/2015.
+ * Classe responsavel pelos itens e icones do menu NavigationDrawer
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 16/12/2015.
  */
 public class MenuItem {
 

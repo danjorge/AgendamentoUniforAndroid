@@ -5,7 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by Salviano on 04/04/2016.
+ * Classe responsavel por criar uma lista de agendamentos trazidos de um servico
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 04/04/2016.
  */
 public class AgendamentoResponse {
 

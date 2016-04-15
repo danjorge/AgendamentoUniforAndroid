@@ -8,6 +8,8 @@ import com.pixplicity.easyprefs.library.Prefs;
 import br.com.danielsouza.ssa.activity.LoginActivity;
 
 /**
+ * Classe responsavel por instanciar o framework EasyPreferences dentro da aplicacao
+ * @author Daniel Jorge
  * Created by Daniel Jorge on 05/04/2016.
  */
 public class PrefsApplication extends Application {
@@ -16,6 +18,9 @@ public class PrefsApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        /**
+         * Instancia do framework
+         */
         new Prefs.Builder()
                 .setContext(getApplicationContext())
                 .setMode(ContextWrapper.MODE_PRIVATE)

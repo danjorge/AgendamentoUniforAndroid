@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import br.com.danielsouza.ssa.R;
 
 /**
- * Created by daniel.souza on 01/02/2016.
+ * Classe responsavel por instaciar o fragment Home
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 01/02/2016.
  */
 public class HomeFragment extends Fragment {
 

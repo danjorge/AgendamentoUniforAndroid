@@ -25,6 +25,8 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Classe responsavel por iniciar a tela de login para o usuario
+ * @author Daniel Jorge
  * Created by Daniel Jorge on 31/03/2016.
  */
 public class LoginActivity extends AppCompatActivity {
@@ -32,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
     private RestInterface restInterface;
     private EditText txtMatricula;
     private EditText txtPassword;
-    private Button btnLoggar;
     private ProgressDialog progressDialog;
 
     @Override
@@ -42,8 +43,11 @@ public class LoginActivity extends AppCompatActivity {
 
         txtMatricula = (EditText) findViewById(R.id.txt_matricula);
         txtPassword = (EditText) findViewById(R.id.txt_password);
-        btnLoggar = (Button) findViewById(R.id.btn_loggar);
+        Button btnLoggar = (Button) findViewById(R.id.btn_loggar);
 
+        //Verifica se existe matricula e senha cadastrada no smartphone
+        //Se existir, inicia a main activity
+        //Se não, inicia a tela de login do usuario.
         if(Prefs.getString("senha", null) != null){
             if(Prefs.getString("matricula", null) != null) {
                 Intent intent = new Intent(this, MainActivity.class);
@@ -78,19 +82,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-
-        Prefs.getString("matricula", "");
-        Prefs.getString("senha", "");
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
+    /**
+     * Método responsavel por verificar se existe o usuário na base de dados do serviço e pela iniciacao da main activity
+     * @param usuariosResponse
+     * @param v
+     */
     public void verificarLogin(UsuariosResponse usuariosResponse, View v){
         for (Usuarios u : usuariosResponse.getUsuarios()) {
             try {
@@ -111,6 +107,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método responsavel por salvar usuario na base de dados para utilização posterior dentro da aplicacao
+     * e para a reinicializacao do mesmo
+     * @param u
+     */
     private void salvarUsuario(Usuarios u) {
         String[] nomeCompleto = u.getNome().split(" ");
         String primeiroNome = nomeCompleto[0];

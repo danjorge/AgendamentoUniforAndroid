@@ -17,7 +17,9 @@ import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.entity.MenuItem;
 
 /**
- * Created by daniel.souza on 16/12/2015.
+ * Classe responsavel por adaptar a lista de itens do menu NavigationDrawer
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 16/12/2015.
  */
 public class ListViewSideMenuAdapter extends BaseAdapter {
 

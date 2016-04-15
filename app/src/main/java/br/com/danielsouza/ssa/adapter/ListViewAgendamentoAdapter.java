@@ -16,7 +16,9 @@ import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.entity.Agendamento;
 
 /**
- * Created by daniel.souza on 29/01/2016.
+ * Classe reponsavel por Adaptar a lista de agendamento no fragment
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 29/01/2016.
  */
 public class ListViewAgendamentoAdapter extends BaseAdapter{
 

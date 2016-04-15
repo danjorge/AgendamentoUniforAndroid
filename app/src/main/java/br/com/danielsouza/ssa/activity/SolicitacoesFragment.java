@@ -33,6 +33,8 @@ import retrofit.client.Response;
 
 
 /**
+ * Classe responsavel por instanciar o fragment de Solicitacoes
+ * @author Daniel Jorge
  * Created by Daniel Jorge on 21/12/2015.
  */
 public class SolicitacoesFragment extends Fragment {
@@ -54,7 +56,9 @@ public class SolicitacoesFragment extends Fragment {
         progressDialog.setMessage("Aguarde");
         progressDialog.show();
 
+        //Recupera a instancia da interface no fragment
         restInterface = RestService.getRestInterface();
+        //Chama o servico e retorna uma lista com as solicitacoes quando o fragment e criado.
         restInterface.getSolicitacaoJSON(Prefs.getString("matricula", "1413556"), new Callback<SolicitacoesResponse>() {
             @Override
             public void success(SolicitacoesResponse solicitacoesResponse, Response response) {
@@ -77,6 +81,7 @@ public class SolicitacoesFragment extends Fragment {
             }
         });
 
+        //Passa o objeto para outras activities
         listViewSolicitacao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -17,6 +17,7 @@ import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
 
 /**
+ * Classe de instancia do componente NavigationDrawer
  * Created by Daniel Jorge on 22/12/2015.
  */
 public class NavigationDrawer extends AppCompatActivity {

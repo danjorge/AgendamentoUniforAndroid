@@ -15,7 +15,9 @@ import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.entity.Solicitacao;
 
 /**
- * Created by daniel.souza on 27/01/2016.
+ * Classe responsavel por adaptar a lista de solicitacao no fragment
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 27/01/2016.
  */
 public class ListViewSolicitacaoAdapter extends BaseAdapter {
 

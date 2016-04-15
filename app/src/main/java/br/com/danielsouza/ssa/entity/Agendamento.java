@@ -3,7 +3,9 @@ package br.com.danielsouza.ssa.entity;
 import java.util.Date;
 
 /**
- * Created by daniel.souza on 29/01/2016.
+ * Entidade Agendamento
+ * @author Daniel Jorge
+ * Created by Daniel Jorge on 29/01/2016.
  */
 public class Agendamento {
 

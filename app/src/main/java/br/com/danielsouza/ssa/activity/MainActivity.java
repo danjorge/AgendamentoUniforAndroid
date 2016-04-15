@@ -30,6 +30,10 @@ import br.com.danielsouza.ssa.R;
 import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
 
 /**
+ * Classe responsavel por alocar todos os fragments,
+ * criar o navigationDrawer,
+ * setar os itens do NavigationDrawer
+ * @author Daniel Jorge
  * Created by Daniel Jorge on 01/12/2015
  */
 public class MainActivity extends NavigationDrawer {
@@ -46,9 +50,6 @@ public class MainActivity extends NavigationDrawer {
         setContentView(R.layout.base_layout);
         super.onCreateDrawer();
 
-        HomeFragment homeFragment = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, homeFragment).commit();
-
         TypedArray navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         String[] navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
 
@@ -60,7 +61,13 @@ public class MainActivity extends NavigationDrawer {
 
         navMenuIcon.recycle();
 
+        HomeFragment homeFragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.changeable, homeFragment).commit();
+        updateMenuItens(0);
+
+        //Intancia o Adapter criado para a lista de ítens do NavigationDrawer
         adapter = new ListViewSideMenuAdapter(this, listMenuItens);
+        //Adapta os ítens da lista de itens no NavigationDrawer
         listView.setAdapter(adapter);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -70,8 +77,10 @@ public class MainActivity extends NavigationDrawer {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
+        //Instancia o Floating Action Button
         multipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
         RelativeLayout fabMenuLayout = (RelativeLayout) findViewById(R.id.layout_fab_menu);
+        //Se o Floating Action Button estiver expandido, o mesmo e fechado
         fabMenuLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -83,33 +92,39 @@ public class MainActivity extends NavigationDrawer {
             }
         });
 
+        //Verifica qual o item do menu foi clicado na lista de Itens do menu NavigationDrawer
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
 
+                    //Ser for o primeiro, realoca a home
                     case 0:
                         HomeFragment homeFragment = new HomeFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, homeFragment).commit();
                         break;
 
+                    //Se for o segundo, realoca solicitacoes
                     case 1:
                         SolicitacoesFragment solicitacoes = new SolicitacoesFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, solicitacoes).commit();
                         novaSolicitacao = true;
                         break;
 
+                    //Se for o terceiro, realoca agendamentos
                     case 2:
                         AgendamentoFragment agendamentoFragment = new AgendamentoFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, agendamentoFragment).commit();
                         break;
 
+                    //Se for o quarto, realoca sobre a aplicacao
                     case 3:
                         SobreAplicacaoFragment sobreAplicacao = new SobreAplicacaoFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, sobreAplicacao).commit();
                         break;
 
+                    //Se for o quinto, inicia dialog perguntando se deseja realmente sair da aplicacao
                     case 4:
                         finish(view);
                         break;
@@ -125,6 +140,7 @@ public class MainActivity extends NavigationDrawer {
 
         frameLayout = (FrameLayout) findViewById(R.id.changeable);
 
+        //Adiciona acao para um dos botoes do Floating Action Button redirecionando para o site da unifor no browser.
         actionB = findViewById(R.id.action_b);
         actionB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,10 +152,18 @@ public class MainActivity extends NavigationDrawer {
         });
     }
 
+    /**
+     * Metodo generico responsavel por iniciar o dialog de saida da aplicacao
+     * @param view
+     */
     public void finish(View view){
         dialogExitApplication(view);
     }
 
+    /**
+     * Metodo responsavel por indicar qual item do menu NavigationDrawer esta selecionado.
+     * @param position
+     */
     public void updateMenuItens(int position){
         for (br.com.danielsouza.ssa.entity.MenuItem m : listMenuItens) {
             m.setSelected(false);
@@ -165,13 +189,6 @@ public class MainActivity extends NavigationDrawer {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -182,6 +199,11 @@ public class MainActivity extends NavigationDrawer {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Metodo responsavel por criar botao no Floating Action Button caso o fragment de solicitacoes seja acionado
+     * @param novaSolicitacao
+     * @return
+     */
     public FloatingActionButton createButtonNewSolicitacao(final Boolean novaSolicitacao) {
         actionNewSolicitacao = new FloatingActionButton(getBaseContext());
         actionNewSolicitacao.setTitle("Nova Solicitação");
@@ -197,6 +219,9 @@ public class MainActivity extends NavigationDrawer {
         return actionNewSolicitacao;
     }
 
+    /**
+     * Metodo que inicia dialog de saida da aplicacao caso o botao de voltar seja tocado.
+     */
     @Override
     public void onBackPressed() {
         if(doubleBackToExitPressedOnce){
@@ -216,6 +241,10 @@ public class MainActivity extends NavigationDrawer {
         }, 10);
     }
 
+    /**
+     * Metodo que cria o dialog para a finalização da aplicacao e redirecionamento para a tela de login
+     * @param view
+     */
     protected void dialogExitApplication(View view){
         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setMessage("Tem certeza que deseja sair?")
