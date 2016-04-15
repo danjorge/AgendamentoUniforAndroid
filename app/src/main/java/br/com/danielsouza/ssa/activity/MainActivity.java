@@ -63,7 +63,6 @@ public class MainActivity extends NavigationDrawer {
 
         HomeFragment homeFragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.changeable, homeFragment).commit();
-        updateMenuItens(0);
 
         //Intancia o Adapter criado para a lista de ítens do NavigationDrawer
         adapter = new ListViewSideMenuAdapter(this, listMenuItens);
