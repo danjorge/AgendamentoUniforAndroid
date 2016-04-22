@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa;
+package br.unifor.pin.ssa;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
