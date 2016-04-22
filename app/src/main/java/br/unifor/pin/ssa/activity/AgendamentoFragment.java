@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 
 import android.app.ProgressDialog;
@@ -13,12 +13,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.adapter.ListViewAgendamentoAdapter;
-import br.com.danielsouza.ssa.entity.Agendamento;
-import br.com.danielsouza.ssa.entity.AgendamentoResponse;
-import br.com.danielsouza.ssa.restImpl.RestService;
-import br.com.danielsouza.ssa.restInteface.RestInterface;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.adapter.ListViewAgendamentoAdapter;
+import br.unifor.pin.ssa.entity.Agendamento;
+import br.unifor.pin.ssa.entity.AgendamentoResponse;
+import br.unifor.pin.ssa.restImpl.RestService;
+import br.unifor.pin.ssa.restInteface.RestInterface;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
