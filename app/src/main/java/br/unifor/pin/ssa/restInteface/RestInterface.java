@@ -31,8 +31,8 @@ public interface RestInterface {
      * Utiliza matodo GET com endpoint do serviao
      * @param callback
      */
-    @GET("/agendamento/json")
-    void getAgendamentoJSON(Callback<AgendamentoResponse> callback);
+    @GET("/agendamento/{matricula}/json")
+    void getAgendamentoJSON(@Path("matricula") String matricula, Callback<AgendamentoResponse> callback);
 
     /**
      * Metodo responsavel por retornar (via JSON) uma lista de usuarios.

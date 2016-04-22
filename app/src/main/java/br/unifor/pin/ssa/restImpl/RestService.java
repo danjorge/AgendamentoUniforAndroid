@@ -26,7 +26,7 @@ public class RestService {
             /**
              * URL do servico
              */
-            String url = "http://192.168.42.113:8080/AgendamentoUnifor/rest";
+            String url = "http://52.39.99.15:8080/AgendamentoUnifor/rest";
 
             /**
              * Instancia da biblioteca GSON do google para conversao de JSON

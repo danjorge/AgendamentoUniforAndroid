@@ -10,8 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.pixplicity.easyprefs.library.Prefs;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import br.unifor.pin.ssa.R;
 import br.unifor.pin.ssa.adapter.ListViewAgendamentoAdapter;
@@ -53,7 +58,7 @@ public class AgendamentoFragment extends Fragment {
         restInterface = RestService.getRestInterface();
 
         //Chama o serviço e retorna uma lista com os agendamentos quando o fragment e criado.
-        restInterface.getAgendamentoJSON(new Callback<AgendamentoResponse>() {
+        restInterface.getAgendamentoJSON(Prefs.getString("matricula", "1413556"), new Callback<AgendamentoResponse>() {
             @Override
             public void success(AgendamentoResponse agendamentoResponse, Response response) {
                 //Caso a lista esteja nula, apresenta um Toast informando que o usuario não possui agendamentos cadastrados
@@ -66,7 +71,17 @@ public class AgendamentoFragment extends Fragment {
 
                 //Percorre a lista do servico e adiciona o objeto a lista do fragment para adaptacao
                 for (Agendamento a : agendamentoResponse.getListaAgendamento()) {
-                    if (a != null) {
+                    if (a.getSolicitacao() != null) {
+
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH);
+                        String dataInicio = dateFormat.format(a.getDataInicio());
+                        String dataFim = dateFormat.format(a.getDataFim());
+                        try {
+                            a.setDataInicio(dateFormat.parse(dataInicio));
+                            a.setDataFim(dateFormat.parse(dataFim));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                         listAgendamento.add(a);
                     }
                 }

@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void failure(RetrofitError error) {
                         progressDialog.dismiss();
                         Toast.makeText(v.getContext(), "FAILURE: "+error.getMessage(), Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
                     }
                 });
             }

@@ -179,8 +179,7 @@ public class MainActivity extends NavigationDrawer {
 
         if(position == 1 && clickMenu == 1){
             multipleActions.addButton(createButtonNewSolicitacao(novaSolicitacao));
-        }
-        else if(multipleActions.getChildAt(3).isShown() && position != 1){
+        } else if (position != 1 && clickMenu > 0) {
             clickMenu -= clickMenu;
             multipleActions.removeButton(actionNewSolicitacao);
         }
