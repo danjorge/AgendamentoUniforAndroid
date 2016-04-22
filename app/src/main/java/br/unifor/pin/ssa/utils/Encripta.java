@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.utils;
+package br.unifor.pin.ssa.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
