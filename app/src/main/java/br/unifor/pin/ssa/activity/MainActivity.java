@@ -1,24 +1,16 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 
 
-import android.annotation.TargetApi;
-import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,8 +24,8 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.adapter.ListViewSideMenuAdapter;
 
 /**
  * Classe responsavel por alocar todos os fragments,
@@ -44,7 +36,7 @@ import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
  */
 public class MainActivity extends NavigationDrawer {
 
-    private ArrayList<br.com.danielsouza.ssa.entity.MenuItem> listMenuItens = new ArrayList<>();
+    private ArrayList<br.unifor.pin.ssa.entity.MenuItem> listMenuItens = new ArrayList<>();
     private boolean doubleBackToExitPressedOnce = false;
     private boolean novaSolicitacao = false;
     private FloatingActionsMenu multipleActions;
@@ -59,11 +51,11 @@ public class MainActivity extends NavigationDrawer {
         TypedArray navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
         String[] navMenuName = getResources().getStringArray(R.array.nav_drawer_items);
 
-        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
-        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
-        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
-        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
-        listMenuItens.add(new br.com.danielsouza.ssa.entity.MenuItem(navMenuIcon.getResourceId(4, -1), navMenuName[4]));
+        listMenuItens.add(new br.unifor.pin.ssa.entity.MenuItem(navMenuIcon.getResourceId(0, -1), navMenuName[0]));
+        listMenuItens.add(new br.unifor.pin.ssa.entity.MenuItem(navMenuIcon.getResourceId(1, -1), navMenuName[1]));
+        listMenuItens.add(new br.unifor.pin.ssa.entity.MenuItem(navMenuIcon.getResourceId(2, -1), navMenuName[2]));
+        listMenuItens.add(new br.unifor.pin.ssa.entity.MenuItem(navMenuIcon.getResourceId(3, -1), navMenuName[3]));
+        listMenuItens.add(new br.unifor.pin.ssa.entity.MenuItem(navMenuIcon.getResourceId(4, -1), navMenuName[4]));
 
         navMenuIcon.recycle();
 
@@ -174,7 +166,7 @@ public class MainActivity extends NavigationDrawer {
      * @param position
      */
     public void updateMenuItens(int position){
-        for (br.com.danielsouza.ssa.entity.MenuItem m : listMenuItens) {
+        for (br.unifor.pin.ssa.entity.MenuItem m : listMenuItens) {
             m.setSelected(false);
         }
         listMenuItens.get(position).setSelected(true);

@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.entity;
+package br.unifor.pin.ssa.entity;
 
 import java.io.Serializable;
 

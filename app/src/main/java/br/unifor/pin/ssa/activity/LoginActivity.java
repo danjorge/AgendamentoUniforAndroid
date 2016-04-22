@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,12 +14,12 @@ import com.pixplicity.easyprefs.library.Prefs;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.entity.Usuarios;
-import br.com.danielsouza.ssa.entity.UsuariosResponse;
-import br.com.danielsouza.ssa.restImpl.RestService;
-import br.com.danielsouza.ssa.restInteface.RestInterface;
-import br.com.danielsouza.ssa.utils.Encripta;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.entity.Usuarios;
+import br.unifor.pin.ssa.entity.UsuariosResponse;
+import br.unifor.pin.ssa.restImpl.RestService;
+import br.unifor.pin.ssa.restInteface.RestInterface;
+import br.unifor.pin.ssa.utils.Encripta;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 progressDialog.show();
+                progressDialog.setCancelable(false);
                 restInterface.getUsuariosJson(new Callback<UsuariosResponse>() {
                     @Override
                     public void success(UsuariosResponse usuariosResponse, Response response) {

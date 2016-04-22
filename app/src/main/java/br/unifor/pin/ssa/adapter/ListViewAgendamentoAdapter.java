@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.adapter;
+package br.unifor.pin.ssa.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.entity.Agendamento;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.entity.Agendamento;
 
 /**
  * Classe reponsavel por Adaptar a lista de agendamento no fragment

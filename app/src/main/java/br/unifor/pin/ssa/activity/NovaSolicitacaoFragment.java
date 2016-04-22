@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 
 import android.app.ProgressDialog;
@@ -13,12 +13,12 @@ import android.widget.Toast;
 
 import com.pixplicity.easyprefs.library.Prefs;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.entity.Solicitacao;
-import br.com.danielsouza.ssa.entity.Status;
-import br.com.danielsouza.ssa.entity.Usuarios;
-import br.com.danielsouza.ssa.restImpl.RestService;
-import br.com.danielsouza.ssa.restInteface.RestInterface;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.entity.Solicitacao;
+import br.unifor.pin.ssa.entity.Status;
+import br.unifor.pin.ssa.entity.Usuarios;
+import br.unifor.pin.ssa.restImpl.RestService;
+import br.unifor.pin.ssa.restInteface.RestInterface;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;

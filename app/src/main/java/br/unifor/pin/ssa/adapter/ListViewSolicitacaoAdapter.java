@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.adapter;
+package br.unifor.pin.ssa.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.entity.Solicitacao;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.entity.Solicitacao;
 
 /**
  * Classe responsavel por adaptar a lista de solicitacao no fragment

@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import br.com.danielsouza.ssa.R;
+import br.unifor.pin.ssa.R;
 
 /**
  * Classe de instancia do fragment Sobre a Aplicacao

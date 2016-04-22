@@ -1,10 +1,10 @@
-package br.com.danielsouza.ssa.restInteface;
+package br.unifor.pin.ssa.restInteface;
 
 
-import br.com.danielsouza.ssa.entity.AgendamentoResponse;
-import br.com.danielsouza.ssa.entity.Solicitacao;
-import br.com.danielsouza.ssa.entity.SolicitacoesResponse;
-import br.com.danielsouza.ssa.entity.UsuariosResponse;
+import br.unifor.pin.ssa.entity.AgendamentoResponse;
+import br.unifor.pin.ssa.entity.Solicitacao;
+import br.unifor.pin.ssa.entity.SolicitacoesResponse;
+import br.unifor.pin.ssa.entity.UsuariosResponse;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;

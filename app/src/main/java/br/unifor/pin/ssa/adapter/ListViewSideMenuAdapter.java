@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.adapter;
+package br.unifor.pin.ssa.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.entity.MenuItem;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.entity.MenuItem;
 
 /**
  * Classe responsavel por adaptar a lista de itens do menu NavigationDrawer

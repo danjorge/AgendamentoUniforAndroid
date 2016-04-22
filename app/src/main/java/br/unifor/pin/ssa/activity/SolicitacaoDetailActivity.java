@@ -1,11 +1,11 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.entity.Solicitacao;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.entity.Solicitacao;
 
 /**
  * Classe de iniciacao da Activity de detalhe da solicitacao

@@ -1,10 +1,10 @@
-package br.com.danielsouza.ssa.restImpl;
+package br.unifor.pin.ssa.restImpl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
 
-import br.com.danielsouza.ssa.restInteface.RestInterface;
+import br.unifor.pin.ssa.restInteface.RestInterface;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.converter.GsonConverter;
@@ -26,7 +26,7 @@ public class RestService {
             /**
              * URL do servico
              */
-            String url = "http://192.168.0.12:8080/AgendamentoUnifor/rest";
+            String url = "http://192.168.42.113:8080/AgendamentoUnifor/rest";
 
             /**
              * Instancia da biblioteca GSON do google para conversao de JSON

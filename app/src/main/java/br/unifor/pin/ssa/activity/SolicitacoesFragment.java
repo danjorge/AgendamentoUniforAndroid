@@ -1,13 +1,11 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +19,12 @@ import com.pixplicity.easyprefs.library.Prefs;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.adapter.ListViewSolicitacaoAdapter;
-import br.com.danielsouza.ssa.entity.Solicitacao;
-import br.com.danielsouza.ssa.entity.SolicitacoesResponse;
-import br.com.danielsouza.ssa.restImpl.RestService;
-import br.com.danielsouza.ssa.restInteface.RestInterface;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.adapter.ListViewSolicitacaoAdapter;
+import br.unifor.pin.ssa.entity.Solicitacao;
+import br.unifor.pin.ssa.entity.SolicitacoesResponse;
+import br.unifor.pin.ssa.restImpl.RestService;
+import br.unifor.pin.ssa.restInteface.RestInterface;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;

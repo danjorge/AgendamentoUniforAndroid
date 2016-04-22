@@ -1,11 +1,9 @@
-package br.com.danielsouza.ssa.database;
+package br.unifor.pin.ssa.database;
 
 import android.app.Application;
 import android.content.ContextWrapper;
 
 import com.pixplicity.easyprefs.library.Prefs;
-
-import br.com.danielsouza.ssa.activity.LoginActivity;
 
 /**
  * Classe responsavel por instanciar o framework EasyPreferences dentro da aplicacao

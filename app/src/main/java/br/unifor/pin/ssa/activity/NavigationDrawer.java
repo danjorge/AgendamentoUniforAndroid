@@ -1,4 +1,4 @@
-package br.com.danielsouza.ssa.activity;
+package br.unifor.pin.ssa.activity;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -12,8 +12,8 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.pixplicity.easyprefs.library.Prefs;
 import com.squareup.picasso.Picasso;
 
-import br.com.danielsouza.ssa.R;
-import br.com.danielsouza.ssa.adapter.ListViewSideMenuAdapter;
+import br.unifor.pin.ssa.R;
+import br.unifor.pin.ssa.adapter.ListViewSideMenuAdapter;
 
 /**
  * Classe de instancia do componente NavigationDrawer
