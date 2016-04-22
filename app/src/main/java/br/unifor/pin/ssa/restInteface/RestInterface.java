@@ -1,10 +1,11 @@
 package br.unifor.pin.ssa.restInteface;
 
 
-import br.unifor.pin.ssa.entity.AgendamentoResponse;
+import java.util.List;
+
+import br.unifor.pin.ssa.entity.Agendamento;
 import br.unifor.pin.ssa.entity.Solicitacao;
-import br.unifor.pin.ssa.entity.SolicitacoesResponse;
-import br.unifor.pin.ssa.entity.UsuariosResponse;
+import br.unifor.pin.ssa.entity.Usuarios;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -24,15 +25,15 @@ public interface RestInterface {
      * @param callback
      */
     @GET("/solicitacao/{matricula}/json")
-    void getSolicitacaoJSON(@Path("matricula") String matricula, Callback<SolicitacoesResponse> callback);
+    void getSolicitacaoJSON(@Path("matricula") String matricula, Callback<List<Solicitacao>> callback);
 
     /**
      * Metodo responsavel por retornar (via JSON) todos os agendamentos cadastrados para o usuario.
      * Utiliza matodo GET com endpoint do serviao
      * @param callback
      */
-    @GET("/agendamento/json")
-    void getAgendamentoJSON(Callback<AgendamentoResponse> callback);
+    @GET("/agendamento/{matricula}/json")
+    void getAgendamentoJSON(@Path("matricula") String matricula, Callback<List<Agendamento>> callback);
 
     /**
      * Metodo responsavel por retornar (via JSON) uma lista de usuarios.
@@ -40,7 +41,7 @@ public interface RestInterface {
      * @param callback
      */
     @GET("/login/json")
-    void getUsuariosJson(Callback<UsuariosResponse> callback);
+    void getUsuariosJson(Callback<List<Usuarios>> callback);
 
     /**
      * Metodo responsavel por salvar uma solicitacao enviando o objeto (solicitacao) no corpo da requisicao via POST.

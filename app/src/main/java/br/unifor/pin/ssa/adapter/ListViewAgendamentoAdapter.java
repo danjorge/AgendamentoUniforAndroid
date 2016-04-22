@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import br.unifor.pin.ssa.R;
 import br.unifor.pin.ssa.entity.Agendamento;
@@ -57,9 +58,9 @@ public class ListViewAgendamentoAdapter extends BaseAdapter{
         TextView txtLabelDataAgendamento = (TextView) convertView.findViewById(R.id.label_data_agendamento);
         ImageView imgView = (ImageView) convertView.findViewById(R.id.imgViewAgendamento);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH);
 
-        txtLabelNumAgendamento.setText("Nº do Agendamento: " + listAgendmaneto.get(position).getId());
+        txtLabelNumAgendamento.setText("Nº do Agendamento: " + listAgendmaneto.get(position).getIdEvent());
         txtLabelStatusAgendamento.setText("Status: " + listAgendmaneto.get(position).getStatusAgendamento().getDescricao());
         txtLabelDataAgendamento.setText("Data: " +dateFormat.format(listAgendmaneto.get(position).getDataInicio()));
         imgView.setImageResource(R.drawable.arrow);

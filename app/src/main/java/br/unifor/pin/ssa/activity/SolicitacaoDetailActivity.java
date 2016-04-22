@@ -2,6 +2,7 @@ package br.unifor.pin.ssa.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import br.unifor.pin.ssa.R;
@@ -28,12 +29,32 @@ public class SolicitacaoDetailActivity extends AppCompatActivity {
         TextView txtSolicitante = (TextView) findViewById(R.id.txt_solicitante_detail);
         TextView txtAssuntoSolicitacao = (TextView) findViewById(R.id.txt_assunto_solicitacao_detail);
         TextView txtDscSolicitacao = (TextView) findViewById(R.id.txt_dsc_solicitacao_detail);
+        TextView labelRespostaSolicitacao = (TextView) findViewById(R.id.label_resposta_solicitacao_detail);
+        TextView txtRespostaSolicitacao = (TextView ) findViewById(R.id.txt_resposta_solicitacao_detail);
 
-        txtIdSolicitacao.setText(solicitacao.getId().toString());
-        txtStatusSolicitacao.setText(solicitacao.getStatusSolicitacao().getDescricao().toUpperCase());
-        txtSolicitante.setText(solicitacao.getUsuario().getNome());
-        txtAssuntoSolicitacao.setText(solicitacao.getAssunto().toUpperCase());
-        txtDscSolicitacao.setText(solicitacao.getDescricao().toUpperCase());
+        if (txtIdSolicitacao != null) {
+            txtIdSolicitacao.setText(solicitacao.getId().toString());
+        }
+        if (txtStatusSolicitacao != null) {
+            txtStatusSolicitacao.setText(solicitacao.getStatusSolicitacao().getDescricao().toUpperCase());
+        }
+        if (txtSolicitante != null) {
+            txtSolicitante.setText(solicitacao.getUsuario().getNome());
+        }
+        if (txtAssuntoSolicitacao != null) {
+            txtAssuntoSolicitacao.setText(solicitacao.getAssunto().toUpperCase());
+        }
+        if (txtDscSolicitacao != null) {
+            txtDscSolicitacao.setText(solicitacao.getDescricao().toUpperCase());
+        }
+        if (labelRespostaSolicitacao != null) {
+            labelRespostaSolicitacao.setVisibility(solicitacao.getRespostaSolicitacao() != null ? View.VISIBLE : View.GONE);
+        }
+        if (txtRespostaSolicitacao != null) {
+            txtRespostaSolicitacao.setVisibility(solicitacao.getRespostaSolicitacao() != null ? View.VISIBLE : View.GONE);
+            txtRespostaSolicitacao.setText(txtRespostaSolicitacao.getVisibility() == View.VISIBLE ? solicitacao.getRespostaSolicitacao().toUpperCase() : "");
+        }
+
 
 
     }

@@ -13,10 +13,10 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import br.unifor.pin.ssa.R;
 import br.unifor.pin.ssa.entity.Usuarios;
-import br.unifor.pin.ssa.entity.UsuariosResponse;
 import br.unifor.pin.ssa.restImpl.RestService;
 import br.unifor.pin.ssa.restInteface.RestInterface;
 import br.unifor.pin.ssa.utils.Encripta;
@@ -66,10 +66,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 progressDialog.show();
                 progressDialog.setCancelable(false);
-                restInterface.getUsuariosJson(new Callback<UsuariosResponse>() {
+                restInterface.getUsuariosJson(new Callback<List<Usuarios>>() {
                     @Override
-                    public void success(UsuariosResponse usuariosResponse, Response response) {
-                        verificarLogin(usuariosResponse, v);
+                    public void success(List<Usuarios> usuarioses, Response response) {
+                        verificarLogin(usuarioses, v);
                         progressDialog.dismiss();
                     }
 
@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void failure(RetrofitError error) {
                         progressDialog.dismiss();
                         Toast.makeText(v.getContext(), "FAILURE: "+error.getMessage(), Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
                     }
                 });
             }
@@ -85,11 +86,11 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Método responsavel por verificar se existe o usuário na base de dados do serviço e pela iniciacao da main activity
-     * @param usuariosResponse
+     * @param usuarioses
      * @param v
      */
-    public void verificarLogin(UsuariosResponse usuariosResponse, View v){
-        for (Usuarios u : usuariosResponse.getUsuarios()) {
+    public void verificarLogin(List<Usuarios> usuarioses, View v){
+        for (Usuarios u : usuarioses) {
             try {
                 if (u.getMatricula().equals(txtMatricula.getText().toString()) && u.getSenha().equals(Encripta.encripta(txtPassword.getText().toString()))) {
                     Intent intent = new Intent(v.getContext(), MainActivity.class);

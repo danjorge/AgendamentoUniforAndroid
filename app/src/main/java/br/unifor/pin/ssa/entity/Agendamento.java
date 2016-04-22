@@ -1,5 +1,6 @@
 package br.unifor.pin.ssa.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,38 +8,47 @@ import java.util.Date;
  * @author Daniel Jorge
  * Created by Daniel Jorge on 29/01/2016.
  */
-public class Agendamento {
+public class Agendamento implements Serializable{
 
-    private Integer id;
-    private String dscAgendamento;
+    private Integer idEvent;
+    private String titulo;
+    private String dscAgendamentoEvent;
     private Date dataInicio;
     private Date dataFim;
     private Solicitacao solicitacao;
     private Status statusAgendamento;
 
-    public Agendamento(Integer id, String dscAgendamento, Date dataInicio, Date dataFim, Solicitacao solicitacao, Status statusAgendamento) {
-        this.id = id;
-        this.dscAgendamento = dscAgendamento;
+    public Agendamento(Integer idEvent, String dscAgendamentoEvent, Date dataInicio, Date dataFim, Solicitacao solicitacao, Status statusAgendamento) {
+        this.idEvent = idEvent;
+        this.dscAgendamentoEvent = dscAgendamentoEvent;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.solicitacao = solicitacao;
         this.statusAgendamento = statusAgendamento;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdEvent() {
+        return idEvent;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdEvent(Integer idEvent) {
+        this.idEvent = idEvent;
     }
 
-    public String getDscAgendamento() {
-        return dscAgendamento;
+    public String getTitulo(){
+        return titulo;
     }
 
-    public void setDscAgendamento(String dscAgendamento) {
-        this.dscAgendamento = dscAgendamento;
+    public void setTitulo(String titulo){
+        this.titulo = titulo;
+    }
+
+    public String getDscAgendamentoEvent() {
+        return dscAgendamentoEvent;
+    }
+
+    public void setDscAgendamentoEvent(String dscAgendamentoEvent) {
+        this.dscAgendamentoEvent = dscAgendamentoEvent;
     }
 
     public Date getDataInicio() {

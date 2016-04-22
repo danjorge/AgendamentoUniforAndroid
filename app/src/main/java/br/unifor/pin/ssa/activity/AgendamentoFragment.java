@@ -2,21 +2,27 @@ package br.unifor.pin.ssa.activity;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.pixplicity.easyprefs.library.Prefs;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import br.unifor.pin.ssa.R;
 import br.unifor.pin.ssa.adapter.ListViewAgendamentoAdapter;
 import br.unifor.pin.ssa.entity.Agendamento;
-import br.unifor.pin.ssa.entity.AgendamentoResponse;
 import br.unifor.pin.ssa.restImpl.RestService;
 import br.unifor.pin.ssa.restInteface.RestInterface;
 import retrofit.Callback;
@@ -53,20 +59,30 @@ public class AgendamentoFragment extends Fragment {
         restInterface = RestService.getRestInterface();
 
         //Chama o serviço e retorna uma lista com os agendamentos quando o fragment e criado.
-        restInterface.getAgendamentoJSON(new Callback<AgendamentoResponse>() {
+        restInterface.getAgendamentoJSON(Prefs.getString("matricula", "1413556"), new Callback<List<Agendamento>>() {
             @Override
-            public void success(AgendamentoResponse agendamentoResponse, Response response) {
+            public void success(List<Agendamento> agendamentos, Response response) {
                 //Caso a lista esteja nula, apresenta um Toast informando que o usuario não possui agendamentos cadastrados
                 //e retorna.
-                if(agendamentoResponse == null){
+                if(agendamentos == null){
                     progressDialog.dismiss();
                     Toast.makeText(getView().getContext(), "Você não tem agendamentos", Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 //Percorre a lista do servico e adiciona o objeto a lista do fragment para adaptacao
-                for (Agendamento a : agendamentoResponse.getListaAgendamento()) {
-                    if (a != null) {
+                for (Agendamento a : agendamentos) {
+                    if (a.getSolicitacao() != null) {
+
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH);
+                        String dataInicio = dateFormat.format(a.getDataInicio());
+                        String dataFim = dateFormat.format(a.getDataFim());
+                        try {
+                            a.setDataInicio(dateFormat.parse(dataInicio));
+                            a.setDataFim(dateFormat.parse(dataFim));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                         listAgendamento.add(a);
                     }
                 }
@@ -81,6 +97,17 @@ public class AgendamentoFragment extends Fragment {
                 progressDialog.dismiss();
                 Toast.makeText(getView().getContext(), "FAILURE: " + error.getMessage(), Toast.LENGTH_LONG).show();
                 error.printStackTrace();
+            }
+        });
+
+        listViewAgendamento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), AgendamentoDetailActivity.class);
+                Agendamento agendamento = listAgendamento.get(position);
+                intent.putExtra("Agendamento", agendamento);
+                getActivity().startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 

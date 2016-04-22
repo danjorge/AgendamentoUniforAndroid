@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalScrollbarPosition="defaultPosition">
+
+        <TextView
+            android:id="@+id/label_detalhes_agendamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="65dp"
+            android:text="@string/agendamento_detail"/>
+
+        <TextView
+            android:id="@+id/label_id_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/label_detalhes_agendamento"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/label_num_agendamento"/>
+
+        <TextView
+            android:id="@+id/txt_id_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginStart="140dp"
+            android:layout_below="@+id/label_detalhes_agendamento"/>
+
+        <TextView
+            android:id="@+id/label_data_inicio_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@+id/label_id_agendamento_detail"
+            android:text="@string/label_data_inicio_agendamento"/>
+
+        <TextView
+            android:id="@+id/txt_data_inicio_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@+id/label_data_inicio_agendamento_detail"/>
+
+        <TextView
+            android:id="@+id/label_data_fim_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginStart="180dp"
+            android:layout_below="@+id/label_id_agendamento_detail"
+            android:text="@string/label_data_fim_agendamento"/>
+
+        <TextView
+            android:id="@+id/txt_data_fim_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="180dp"
+            android:layout_marginStart="180dp"
+            android:layout_below="@+id/label_data_fim_agendamento_detail"/>
+
+        <TextView
+            android:id="@+id/label_titulo_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@+id/txt_data_inicio_agendamento_detail"
+            android:text="@string/label_titulo_agendamento"/>
+
+        <TextView
+            android:id="@+id/txt_titulo_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginEnd="21dp"
+            android:layout_below="@+id/label_titulo_agendamento_detail"/>
+
+        <TextView
+            android:id="@+id/label_dsc_agendaento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@+id/txt_titulo_agendamento_detail"
+            android:text="@string/label_dsc_agendaento_detail"/>
+
+        <TextView
+            android:id="@+id/txt_dsc_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginEnd="21dp"
+            android:layout_below="@id/label_dsc_agendaento_detail" />
+
+        <TextView
+            android:id="@+id/label_dados_solicitacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txt_dsc_agendamento_detail"
+            android:text="@string/label_dados_solicitacao"/>
+
+        <TextView
+            android:id="@+id/label_solicitante_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/label_solicitante_agendamento_detail"
+            android:layout_below="@+id/label_dados_solicitacao"/>
+
+        <TextView
+            android:id="@+id/txt_solicitante_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@+id/label_solicitante_agendamento_detail"/>
+
+        <TextView
+            android:id="@+id/labeL_dsc_solicitacao_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@+id/txt_solicitante_agendamento_detail"
+            android:text="@string/label_dsc_solicitacao"/>
+
+        <TextView
+            android:id="@+id/txt_dsc_solicitacao_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginEnd="21dp"
+            android:layout_below="@+id/labeL_dsc_solicitacao_agendamento_detail" />
+
+        <TextView
+            android:id="@+id/label_resposta_solicitacao_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_below="@+id/txt_dsc_solicitacao_agendamento_detail"
+            android:text="@string/label_resposta_solicitacao"/>
+
+        <TextView
+            android:id="@+id/txt_resposta_solicitacao_agendamento_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginEnd="21dp"
+            android:layout_below="@+id/label_resposta_solicitacao_agendamento_detail"/>
+
+    </RelativeLayout>
+</ScrollView>

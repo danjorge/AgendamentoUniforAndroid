@@ -22,7 +22,6 @@ import java.util.List;
 import br.unifor.pin.ssa.R;
 import br.unifor.pin.ssa.adapter.ListViewSolicitacaoAdapter;
 import br.unifor.pin.ssa.entity.Solicitacao;
-import br.unifor.pin.ssa.entity.SolicitacoesResponse;
 import br.unifor.pin.ssa.restImpl.RestService;
 import br.unifor.pin.ssa.restInteface.RestInterface;
 import retrofit.Callback;
@@ -58,10 +57,10 @@ public class SolicitacoesFragment extends Fragment {
         //Recupera a instancia da interface no fragment
         restInterface = RestService.getRestInterface();
         //Chama o servico e retorna uma lista com as solicitacoes quando o fragment e criado.
-        restInterface.getSolicitacaoJSON(Prefs.getString("matricula", "1413556"), new Callback<SolicitacoesResponse>() {
+        restInterface.getSolicitacaoJSON(Prefs.getString("matricula", "1413556"), new Callback<List<Solicitacao>>() {
             @Override
-            public void success(SolicitacoesResponse solicitacoesResponse, Response response) {
-                for (Solicitacao s : solicitacoesResponse.getListaSolicitacao()) {
+            public void success(List<Solicitacao> solicitacaos, Response response) {
+                for (Solicitacao s : solicitacaos) {
                     if (s != null) {
                         listaSolicitacoes.add(s);
                     }
@@ -90,7 +89,7 @@ public class SolicitacoesFragment extends Fragment {
                 getActivity().startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
-        });
+                      });
 
         return v;
     }
