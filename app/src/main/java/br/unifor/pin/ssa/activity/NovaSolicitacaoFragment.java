@@ -2,11 +2,17 @@ package br.unifor.pin.ssa.activity;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,8 +36,8 @@ import retrofit.client.Response;
 public class NovaSolicitacaoFragment extends Fragment {
 
     private RestInterface restInterface;
-    private EditText txtAssuntoSolicitacao;
-    private EditText txtDescricaoSolicitacao;
+    private TextInputLayout inputLayoutAssunto, inputLayoutDscSolicitacao;
+    private EditText txtAssuntoSolicitacao, txtDescricaoSolicitacao;
     private ProgressDialog progressDialog;
 
     /**
@@ -45,12 +51,14 @@ public class NovaSolicitacaoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_nova_solicitacao, container, false);
 
+        inputLayoutAssunto = (TextInputLayout) v.findViewById(R.id.input_layout_assunto_nova_solicitacao);
+        inputLayoutDscSolicitacao = (TextInputLayout) v.findViewById(R.id.input_layout_dsc_nova_solicitacao);
         txtAssuntoSolicitacao = (EditText) v.findViewById(R.id.txt_assunto_nova_solicitacao);
         txtDescricaoSolicitacao = (EditText) v.findViewById(R.id.txt_dsc_nova_solicitacao);
         Button btnSalvarSolicitacao = (Button) v.findViewById(R.id.btn_salvar_solicitacao);
 
-
-
+        txtAssuntoSolicitacao.addTextChangedListener(new MyTextWatcher(txtAssuntoSolicitacao));
+        txtDescricaoSolicitacao.addTextChangedListener(new MyTextWatcher(txtDescricaoSolicitacao));
 
         /**
          * Instancia de interface que recupera o serviço para utilização na classe.
@@ -63,6 +71,10 @@ public class NovaSolicitacaoFragment extends Fragment {
         btnSalvarSolicitacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(!validateForm()){
+                    return;
+                }
 
                 progressDialog = new ProgressDialog(v.getContext());
                 progressDialog.setTitle("SSA Mobile");
@@ -100,6 +112,9 @@ public class NovaSolicitacaoFragment extends Fragment {
                     public void success(Solicitacao solicitacao, Response response) {
                         progressDialog.dismiss();
                         Toast.makeText(getView().getContext(), "Solicitação salva com sucesso", Toast.LENGTH_LONG).show();
+                        txtAssuntoSolicitacao.getText().clear();
+                        txtDescricaoSolicitacao.getText().clear();
+                        hideSoftKeyboard();
                     }
 
                     @Override
@@ -113,5 +128,78 @@ public class NovaSolicitacaoFragment extends Fragment {
         });
 
         return v;
+    }
+
+    private boolean validateForm() {
+        boolean validateAssunto = validateAssunto();
+        boolean validateDscSolicitacao = validateDscSolicitacao();
+        return validateAssunto && validateDscSolicitacao;
+    }
+
+    private boolean validateAssunto() {
+        if(txtAssuntoSolicitacao.getText().toString().trim().isEmpty()){
+           inputLayoutAssunto.setError(getString(R.string.err_msg_assunto));
+            requestFocus(txtAssuntoSolicitacao);
+            return false;
+        } else {
+            inputLayoutAssunto.setErrorEnabled(false);
+        }
+        return true;
+    }
+
+    private boolean validateDscSolicitacao() {
+        if(txtDescricaoSolicitacao.getText().toString().trim().isEmpty()){
+            inputLayoutDscSolicitacao.setError(getString(R.string.err_msg_dsc_solicitacao));
+            requestFocus(txtDescricaoSolicitacao);
+            return false;
+        } else {
+            inputLayoutDscSolicitacao.setErrorEnabled(false);
+        }
+        return true;
+    }
+
+    private void requestFocus(View view){
+        if(view.requestFocus()){
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
+    public void hideSoftKeyboard() {
+        if(getActivity().getCurrentFocus()!=null) {
+            getContext();
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+    private class MyTextWatcher implements TextWatcher{
+
+        private View view;
+
+        public MyTextWatcher(View view) {
+            this.view = view;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            switch (view.getId()){
+                case R.id.txt_assunto_nova_solicitacao:
+                    validateAssunto();
+                    break;
+                case R.id.txt_dsc_nova_solicitacao:
+                    validateDscSolicitacao();
+                    break;
+            }
+        }
     }
 }

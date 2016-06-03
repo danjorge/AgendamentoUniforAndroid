@@ -1,16 +1,23 @@
 package br.unifor.pin.ssa.restInteface;
 
 
+import com.squareup.okhttp.RequestBody;
+
+import java.io.File;
 import java.util.List;
 
 import br.unifor.pin.ssa.entity.Agendamento;
+import br.unifor.pin.ssa.entity.Anexos;
 import br.unifor.pin.ssa.entity.Solicitacao;
 import br.unifor.pin.ssa.entity.Usuarios;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.Multipart;
 import retrofit.http.POST;
+import retrofit.http.Part;
 import retrofit.http.Path;
+import retrofit.mime.TypedFile;
 
 /**
  * classe que contem os metodos necessarios para a utilizacao do servico
@@ -51,5 +58,8 @@ public interface RestInterface {
      */
     @POST("/solicitacao/salvarSolicitacao")
     void salvarSolicitacao(@Body Solicitacao solicitacao, Callback<Solicitacao> callback);
+
+    @POST("/login/{matricula}/salvarImagemUsuario")
+    void salvarImagemUsuario(@Path("matricula")String matricula, @Body Anexos anexos, Callback<Anexos> callback);
 
 }

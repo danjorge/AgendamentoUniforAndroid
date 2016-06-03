@@ -2,6 +2,7 @@ package br.unifor.pin.ssa.activity;
 
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -11,9 +12,11 @@ import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
@@ -71,23 +74,26 @@ public class MainActivity extends NavigationDrawer {
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         //Instancia o Floating Action Button
         multipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
         RelativeLayout fabMenuLayout = (RelativeLayout) findViewById(R.id.layout_fab_menu);
         //Se o Floating Action Button estiver expandido, o mesmo e fechado
-        fabMenuLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (multipleActions.isExpanded()) {
-                    multipleActions.collapse();
-                    return true;
+        if (fabMenuLayout != null) {
+            fabMenuLayout.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (multipleActions.isExpanded()) {
+                        multipleActions.collapse();
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
+        }
 
         //Verifica qual o item do menu foi clicado na lista de Itens do menu NavigationDrawer
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -138,11 +144,15 @@ public class MainActivity extends NavigationDrawer {
         frameLayout = (FrameLayout) findViewById(R.id.changeable);
 
         actionA = (FloatingActionButton) findViewById(R.id.action_a);
-        actionA.setIcon(R.drawable.ic_power_settings_new_black_24dp);
+        if (actionA != null) {
+            actionA.setIcon(R.drawable.ic_power_settings_new_black_24dp);
+        }
 
         //Adiciona acao para um dos botoes do Floating Action Button redirecionando para o site da unifor no browser.
         actionB = (FloatingActionButton) findViewById(R.id.action_b);
-        actionB.setIcon(R.drawable.ic_trending_flat_black_24dp);
+        if (actionB != null) {
+            actionB.setIcon(R.drawable.ic_trending_flat_black_24dp);
+        }
         actionB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,6 +235,7 @@ public class MainActivity extends NavigationDrawer {
      */
     @Override
     public void onBackPressed() {
+        hideSoftKeyboard();
         if(doubleBackToExitPressedOnce){
             super.onBackPressed();
             return;
@@ -267,5 +278,12 @@ public class MainActivity extends NavigationDrawer {
         AlertDialog alert = builder.create();
         // The dialog utils is outside an activity. Need to set owner
         alert.show();
+    }
+
+    public void hideSoftKeyboard() {
+        if(getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
     }
 }

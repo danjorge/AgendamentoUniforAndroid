@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="65dp"
         android:text="@string/solicitacao_detail"
-        />
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/label_id_solicitacao"
@@ -22,7 +22,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
         android:text="@string/label_num_solicitacao"
-        />
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txt_id_solicitacao"
@@ -41,7 +41,8 @@
         android:paddingTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:text="@string/label_status"/>
+        android:text="@string/label_status"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txt_status_solicitacao_detail"
@@ -60,7 +61,8 @@
         android:paddingTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:text="@string/label_solicitante"/>
+        android:text="@string/label_solicitante"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txt_solicitante_detail"
@@ -79,7 +81,8 @@
         android:paddingTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:text="@string/label_assunto_solicitacao"/>
+        android:text="@string/label_assunto_solicitacao"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txt_assunto_solicitacao_detail"
@@ -99,7 +102,8 @@
         android:paddingTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:text="@string/label_dsc_solicitacao"/>
+        android:text="@string/label_dsc_solicitacao"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txt_dsc_solicitacao_detail"
@@ -119,7 +123,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
         android:layout_below="@+id/txt_dsc_solicitacao_detail"
-        android:text="@string/label_resposta_solicitacao"/>
+        android:text="@string/label_resposta_solicitacao"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txt_resposta_solicitacao_detail"

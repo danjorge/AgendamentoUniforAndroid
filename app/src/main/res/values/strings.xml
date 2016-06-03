@@ -56,6 +56,11 @@
 
     <!-- Strings related to Nova Solicitacao -->
     <string name="label_nova_solicitacao">Nova Solicitacao</string>
+    <string name="hint_assunto">Assunto</string>
+    <string name="hint_dsc_solicitacao">Descrição da Solicitação</string>
+    <string name="err_msg_assunto">Insira um assunto para a solicitação</string>
+    <string name="err_msg_dsc_solicitacao">Insira uma descrição para a solicitação</string>
+    <string name="btn_salvar">Salvar</string>
 
     <!-- Strings related to Agendamento detail-->
     <string name="agendamento_detail">Detalhes do Agendamento</string>

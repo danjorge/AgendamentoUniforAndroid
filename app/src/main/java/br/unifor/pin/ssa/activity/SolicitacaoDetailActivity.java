@@ -1,8 +1,14 @@
 package br.unifor.pin.ssa.activity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import br.unifor.pin.ssa.R;
@@ -19,6 +25,16 @@ public class SolicitacaoDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitacao_detail);
 
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        setTitle("");
         /**
          * Recupera o objeto passado de outra activity/fragment para setar nas labels que compoem a activity
          */
@@ -54,14 +70,29 @@ public class SolicitacaoDetailActivity extends AppCompatActivity {
             txtRespostaSolicitacao.setVisibility(solicitacao.getRespostaSolicitacao() != null ? View.VISIBLE : View.GONE);
             txtRespostaSolicitacao.setText(txtRespostaSolicitacao.getVisibility() == View.VISIBLE ? solicitacao.getRespostaSolicitacao().toUpperCase() : "");
         }
+    }
 
-
-
+    public void hideSoftKeyboard() {
+        if(getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        hideSoftKeyboard();
         overridePendingTransition(R.anim.right_out, R.anim.left_in);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return false;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

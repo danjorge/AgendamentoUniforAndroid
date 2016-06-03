@@ -19,6 +19,8 @@ public class RestService {
 
     protected static RestInterface restInterface;
 
+    public static final String URL_PERFIL = "http://52.39.99.15:8080/AgendamentoUnifor/resources/img/perfil/";
+
     public static RestInterface getRestInterface() {
 
         if (restInterface == null) {
